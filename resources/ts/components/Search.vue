@@ -1,5 +1,5 @@
 <template>
   <v-content>
-    <h1>404 Not Found</h1>
+    <h1>Search Page</h1>
   </v-content>
 </template>

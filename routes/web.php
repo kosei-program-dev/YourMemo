@@ -12,9 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/{any}', function () {
-    return view('welcome');
-})->where('any','.*');
+// Route::get('/{any}', function () {
+//     return view('welcome');
+// })->where('any','.*');
+
+
+//test用
+Route::get('get/everyoneNote', 'Api\EveryoneNoteController@getAllNotes');
+
 
 // Route::get('/', function () {
 //     return view('welcome');

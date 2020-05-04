@@ -1,15 +1,15 @@
 import Vue from "vue";
 import Router from "vue-router";
-import MyPage from "./components/MyPage.vue";
-import EveryoneMemo from "./components/EveryoneMemo.vue";
-import Home from "./components/Home.vue";
-import Login from "./components/Login.vue";
-import Logout from "./components/Logout.vue";
-import MyMemo from "./components/MyMemo.vue";
-import NotFound from "./components/NotFound.vue";
-import Notification from "./components/Notification.vue";
-import RegisterMemo from "./components/RegisterMemo.vue";
-import Search from "./components/Search.vue";
+import MyPage from "./components/pages/MyPage.vue";
+import EveryoneNote from "./components/pages/EveryoneNote.vue";
+import Home from "./components/pages/Home.vue";
+import Login from "./components/pages/Login.vue";
+import Logout from "./components/pages/Logout.vue";
+import MyNote from "./components/pages/MyNote.vue";
+import NotFound from "./components/pages/NotFound.vue";
+import Notification from "./components/pages/Notification.vue";
+import RegisterNote from "./components/pages/RegisterNote.vue";
+import Search from "./components/pages/Search.vue";
 
 Vue.use(Router);
 
@@ -26,9 +26,9 @@ export default new Router({
             component: MyPage
         },
         {
-            path: "/everyoneMemo",
-            name: "everyoneMemo",
-            component: EveryoneMemo
+            path: "/everyoneNote",
+            name: "everyoneNote",
+            component: EveryoneNote
         },
         {
             path: "/",
@@ -46,9 +46,9 @@ export default new Router({
             component: Logout
         },
         {
-            path: "/myMemo",
-            name: "myMemo",
-            component: MyMemo
+            path: "/myNote",
+            name: "myNote",
+            component: MyNote
         },
         {
             path: "/notification",
@@ -56,9 +56,9 @@ export default new Router({
             component: Notification
         },
         {
-            path: "/registerMemo",
-            name: "registerMemo",
-            component: RegisterMemo
+            path: "/registerNote",
+            name: "registerNote",
+            component: RegisterNote
         },
         {
             path: "/search",

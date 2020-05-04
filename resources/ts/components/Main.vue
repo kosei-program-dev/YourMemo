@@ -19,7 +19,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/everyoneMemo">everyoneMemo</router-link>
+              <router-link class="black--text" to="/everyoneNote">EveryoneNote</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -30,7 +30,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/myMemo">MyMemo</router-link>
+              <router-link class="black--text" to="/myNote">MyNote</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -85,7 +85,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/registerMemo">RegisterMemo</router-link>
+              <router-link class="black--text" to="/registerNote">RegisterNote</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>

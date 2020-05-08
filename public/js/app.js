@@ -3208,17 +3208,27 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 
 let EveryoneNote = class EveryoneNote extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Vue"] {
-    getEvents() {
+    constructor() {
+        super(...arguments);
+        this.events = [];
+    }
+    created() {
+        console.log("result");
+        this.getNotes();
+    }
+    getNotes() {
         vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Vue"].prototype.$http
             .get("/api/get/everyoneNote")
             .then((res) => {
+            console.log("apiContent");
+            console.log(res);
             this.events = res.data.data;
             this.events.map(object => {
-                return ((object.id = object.event_name),
-                    (object.comment = object.event_details),
-                    (object.previewImage = object.event_closing_day),
-                    (object.url = object.event_closing_day),
-                    (object.evaluation = object.event_closing_day));
+                return ((object.id = object.id),
+                    (object.comment = object.comment),
+                    (object.previewImage = object.previewImage),
+                    (object.url = object.url),
+                    (object.evaluation = object.evaluation));
             });
         })
             .catch((error) => {
@@ -64830,7 +64840,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\YourMemo\resources\ts\app.ts */"./resources/ts/app.ts");
+module.exports = __webpack_require__(/*! /var/www/html/resources/ts/app.ts */"./resources/ts/app.ts");
 
 
 /***/ })

@@ -4,6 +4,7 @@ export interface NoteObject {
     previewImage?: string;
     url?: string;
     evaluation?: number;
+    created_at?: number;
 }
 
 export interface NoteApiResponse {

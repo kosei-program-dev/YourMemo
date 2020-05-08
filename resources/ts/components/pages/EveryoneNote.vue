@@ -37,19 +37,25 @@ import { NoteObject, NoteApiResponse } from "../../vue-data-entity/NoteObject";
 
 @Component
 export default class EveryoneNote extends Vue {
-  events: Array<NoteObject>;
-  public getEvents() {
+  events: Array<NoteObject> = [];
+  public created() {
+    console.log("result");
+    this.getNotes();
+  }
+  public getNotes() {
     Vue.prototype.$http
       .get("/api/get/everyoneNote")
       .then((res: AxiosResponse<NoteApiResponse>): void => {
+        console.log("apiContent");
+        console.log(res);
         this.events = res.data.data;
         this.events.map(object => {
           return (
-            (object.id = object.event_name),
-            (object.comment = object.event_details),
-            (object.previewImage = object.event_closing_day),
-            (object.url = object.event_closing_day),
-            (object.evaluation = object.event_closing_day)
+            (object.id = object.id),
+            (object.comment = object.comment),
+            (object.previewImage = object.previewImage),
+            (object.url = object.url),
+            (object.evaluation = object.evaluation)
           );
         });
       })

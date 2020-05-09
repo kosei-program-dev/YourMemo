@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app clipped>
       <v-list dense>
-        <v-list-item>
+        <v-list-item v-if="auth">
           <v-list-item-action>
             <v-icon>mdi-account</v-icon>
           </v-list-item-action>
@@ -24,7 +24,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item>
+        <v-list-item v-if="auth">
           <v-list-item-action>
             <v-icon>mdi-table-heart</v-icon>
           </v-list-item-action>
@@ -46,7 +46,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item>
+        <v-list-item v-if="!auth">
           <v-list-item-action>
             <v-icon>mdi-login</v-icon>
           </v-list-item-action>
@@ -57,18 +57,18 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item>
+        <v-list-item v-if="auth">
           <v-list-item-action>
             <v-icon>mdi-logout</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/logout">Logout</router-link>
+              <a class="black--text" href="/auth/logout">Logout</a>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item>
+        <v-list-item v-if="auth">
           <v-list-item-action>
             <v-icon>mdi-bell-ring</v-icon>
           </v-list-item-action>
@@ -79,7 +79,18 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item>
+        <v-list-item v-if="!auth">
+          <v-list-item-action>
+            <v-icon>mdi-note-plus</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>
+              <router-link class="black--text" to="/register">Register</router-link>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item v-if="auth">
           <v-list-item-action>
             <v-icon>mdi-note-plus</v-icon>
           </v-list-item-action>
@@ -130,9 +141,9 @@
       </v-btn>
     </v-bottom-navigation>
 
-    <!-- <v-footer app clipped-center color="blue darken-3 white--text">
+    <v-footer app clipped-center color="blue darken-3 white--text">
       <span>&copy; Kosei's Project</span>
-    </v-footer>-->
+    </v-footer>
   </v-app>
 </template>
 
@@ -142,5 +153,10 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 export default class App extends Vue {
   drawer: boolean = false;
   bottomNav: boolean = true;
+  @Prop()
+  auth!: any;
+
+  @Prop()
+  errors!: any;
 }
 </script>

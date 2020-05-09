@@ -19,5 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['api']], function () {
-    Route::get('/api/get/everyoneNote', 'Api\EveryoneNoteController@getAllNotes');
+    Route::get('/get/everyoneNote', 'Api\EveryoneNoteController@getAllNotes');
 });

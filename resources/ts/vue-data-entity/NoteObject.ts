@@ -1,10 +1,11 @@
 export interface NoteObject {
-    id?: number;
+    id: number;
     comment: string;
     previewImage?: string;
-    url?: string;
-    evaluation?: number;
-    created_at?: number;
+    preview_image?: string;
+    url: string;
+    evaluation: number;
+    created_at: any;
 }
 
 export interface NoteApiResponse {

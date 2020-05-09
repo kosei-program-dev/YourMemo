@@ -8,6 +8,7 @@ import Logout from "./components/pages/Logout.vue";
 import MyNote from "./components/pages/MyNote.vue";
 import NotFound from "./components/pages/NotFound.vue";
 import Notification from "./components/pages/Notification.vue";
+import Register from "./components/pages/Register.vue";
 import RegisterNote from "./components/pages/RegisterNote.vue";
 import Search from "./components/pages/Search.vue";
 
@@ -59,6 +60,11 @@ export default new Router({
             path: "/registerNote",
             name: "registerNote",
             component: RegisterNote
+        },
+        {
+            path: "/register",
+            name: "register",
+            component: Register
         },
         {
             path: "/search",

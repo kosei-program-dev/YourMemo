@@ -19,7 +19,7 @@ class CreateNotesTable extends Migration
             $table->text('comment');
             $table->text('preview_image')->nullable();
             $table->string('url')->nullable();
-            $table->integer('evaluation')->nullable();
+            $table->float('evaluation',2,1)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

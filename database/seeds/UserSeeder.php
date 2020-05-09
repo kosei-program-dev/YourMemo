@@ -14,12 +14,15 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $password = 'adminadmin';
         User::truncate();
-        User::create([
-            'name' => 'test',
-            'email' => 'test@test.com',
-            'password' => 'testtest',
+        User::create(
+        [
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' =>  Hash::make($password),
             'api_token' => Str::random(60),
-        ]);
+        ]
+    );
     }
 }

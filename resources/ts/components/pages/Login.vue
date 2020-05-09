@@ -45,15 +45,15 @@
                   </v-card-actions>
                 </v-form>
               </ValidationObserver>
-              <v-col cols="12" md="12">
+              <!-- <v-col cols="12" md="12">
                 <v-card-title class="cyan" @click="twitterLogin()">
                   <v-icon large left>mdi-twitter</v-icon>
                   <span class="title font-weight-light">Login with Twitter</span>
                 </v-card-title>
-              </v-col>
-              <v-col cols="12" md="12">
+              </v-col>-->
+              <!-- <v-col cols="12" md="12">
                 <router-link to="/password/email">forget password</router-link>
-              </v-col>
+              </v-col>-->
             </v-card>
           </v-container>
         </v-flex>

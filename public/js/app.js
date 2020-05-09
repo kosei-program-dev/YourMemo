@@ -3222,10 +3222,10 @@ let EveryoneNote = class EveryoneNote extends vue_property_decorator__WEBPACK_IM
     constructor() {
         super(...arguments);
         this.notes = [];
+        this.pageLength = 15;
+        this.page = true;
     }
-    //   items: Array<NoteObject> = [];
     created() {
-        console.log("result");
         this.getNotes();
     }
     getNotes() {
@@ -3233,7 +3233,6 @@ let EveryoneNote = class EveryoneNote extends vue_property_decorator__WEBPACK_IM
             .get("/api/get/everyoneNote")
             .then((res) => {
             this.notes = res.data.data;
-            console.log(this.notes);
         })
             .catch((error) => {
             alert("検索実行時にエラーが発生しました");
@@ -7165,52 +7164,6 @@ var render = function() {
                                   )
                                 ],
                                 1
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12", md: "12" } },
-                            [
-                              _c(
-                                "v-card-title",
-                                {
-                                  staticClass: "cyan",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.twitterLogin()
-                                    }
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "v-icon",
-                                    { attrs: { large: "", left: "" } },
-                                    [_vm._v("mdi-twitter")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "span",
-                                    { staticClass: "title font-weight-light" },
-                                    [_vm._v("Login with Twitter")]
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12", md: "12" } },
-                            [
-                              _c(
-                                "router-link",
-                                { attrs: { to: "/password/email" } },
-                                [_vm._v("forget password")]
                               )
                             ],
                             1
@@ -65622,8 +65575,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\YourMemo\resources\ts\app.ts */"./resources/ts/app.ts");
-module.exports = __webpack_require__(/*! C:\YourMemo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/resources/ts/app.ts */"./resources/ts/app.ts");
+module.exports = __webpack_require__(/*! /var/www/html/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

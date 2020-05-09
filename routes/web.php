@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/auth/logout', 'Auth\LoginController@logout');
+Route::post('/register', 'Auth\RegisterController@register');
+Route::post('/login', 'Auth\LoginController@login');
 
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any','.*');
 
 Auth::routes();
-Route::post('/register', 'Auth\RegisterController@register');
 Route::get('/home', 'HomeController@index')->name('home');
 
 

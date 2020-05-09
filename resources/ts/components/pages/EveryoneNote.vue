@@ -10,6 +10,7 @@
             <th class="text-left">URL</th>
             <th class="text-left">アップロード日時</th>
             <th class="text-left">評価</th>
+            <!-- <th class="text-left">投稿者名</th> -->
           </tr>
         </thead>
         <tbody>
@@ -21,6 +22,7 @@
             <td style="white-space:pre-wrap; word-wrap:break-word;">{{ item.url }}</td>
             <td>{{ item.created_at }}</td>
             <td>{{ item.evaluation }}</td>
+            <!-- <td>{{ item.name }}</td> -->
           </tr>
         </tbody>
       </template>
@@ -37,9 +39,9 @@ import { NoteObject, NoteApiResponse } from "../../vue-data-entity/NoteObject";
 @Component
 export default class EveryoneNote extends Vue {
   notes: Array<NoteObject> = [];
-  //   items: Array<NoteObject> = [];
+  pageLength: number = 15;
+  page: boolean = true;
   public created() {
-    console.log("result");
     this.getNotes();
   }
   public getNotes() {
@@ -47,7 +49,6 @@ export default class EveryoneNote extends Vue {
       .get("/api/get/everyoneNote")
       .then((res: AxiosResponse<NoteApiResponse>): void => {
         this.notes = res.data.data;
-        console.log(this.notes);
       })
       .catch((error: AxiosError): void => {
         alert("検索実行時にエラーが発生しました");

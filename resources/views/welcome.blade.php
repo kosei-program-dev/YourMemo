@@ -33,7 +33,7 @@
     </head>
     <body>
       <div id="app">
-        <app/>
+        <app :auth="{{ Auth::user() ?? 'null' }}" :errors="{{ $errors }}"/>
       </div>
       <script src="{{ mix('/js/app.js') }}"></script>
     </body>

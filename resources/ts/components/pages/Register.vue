@@ -6,12 +6,24 @@
           <v-container style class="text-xs-center">
             <v-card flat>
               <v-card-title primary-title>
-                <h4>Login</h4>
+                <h4>Register</h4>
               </v-card-title>
               <ValidationObserver ref="observer">
-                <v-form method="POST" action="/login" id="login">
+                <v-form method="POST" action="/register" id="register">
                   <input type="hidden" name="_token" :value="csrf" />
+
                   <v-col cols="12" md="12">
+                    <ValidationProvider v-slot="{ errors }" name="名前" rules="required|max:100">
+                      <v-text-field
+                        prepend-icon="mdi-account-circle"
+                        v-model="name"
+                        name="name"
+                        :counter="100"
+                        :error-messages="errors"
+                        label="名前"
+                        required
+                      ></v-text-field>
+                    </ValidationProvider>
                     <ValidationProvider
                       v-slot="{ errors }"
                       name="メールアドレス"
@@ -27,33 +39,45 @@
                         required
                       ></v-text-field>
                     </ValidationProvider>
-                    <ValidationProvider v-slot="{ errors }" name="パスワード" rules="required|max:100">
+                    <ValidationProvider
+                      v-slot="{ errors }"
+                      name="パスワード"
+                      rules="required|max:100|min:8|confirmed:password_confirmation"
+                    >
                       <v-text-field
                         prepend-icon="mdi-lock"
                         v-model="password"
                         name="password"
                         :counter="100"
                         :error-messages="errors"
-                        label="パスワード"
                         type="password"
+                        label="パスワード"
+                        required
+                      ></v-text-field>
+                    </ValidationProvider>
+                    <ValidationProvider
+                      v-slot="{ errors }"
+                      name="パスワード再確認"
+                      vid="password_confirmation"
+                      rules="required|max:100|min:8"
+                    >
+                      <v-text-field
+                        prepend-icon="mdi-lock"
+                        v-model="password_confirmation"
+                        :counter="100"
+                        name="password_confirmation"
+                        :error-messages="errors"
+                        type="password"
+                        label="パスワード再確認"
                         required
                       ></v-text-field>
                     </ValidationProvider>
                   </v-col>
                   <v-card-actions>
-                    <v-btn primary large block class="primary" @click="login()">Login</v-btn>
+                    <v-btn primary large block class="primary" @click="register()">Register</v-btn>
                   </v-card-actions>
                 </v-form>
               </ValidationObserver>
-              <v-col cols="12" md="12">
-                <v-card-title class="cyan" @click="twitterLogin()">
-                  <v-icon large left>mdi-twitter</v-icon>
-                  <span class="title font-weight-light">Login with Twitter</span>
-                </v-card-title>
-              </v-col>
-              <v-col cols="12" md="12">
-                <router-link to="/password/email">forget password</router-link>
-              </v-col>
             </v-card>
           </v-container>
         </v-flex>
@@ -63,13 +87,15 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
 import { ValidationObserver } from "vee-validate";
 
 @Component
 export default class Login extends Vue {
+  name: string = "";
   email: string = "";
   password: string = "";
+  password_confirmation = "";
   csrf: string | null = document
     .querySelector('meta[name="csrf-token"]')!
     .getAttribute("content");
@@ -78,18 +104,11 @@ export default class Login extends Vue {
     observer: InstanceType<typeof ValidationObserver>;
   };
 
-  public async login() {
+  public async register() {
     const isValid = await this.$refs.observer.validate();
     if (isValid) {
-      (<HTMLFormElement>document.querySelector("#login")).submit();
+      (<HTMLFormElement>document.querySelector("#register")).submit();
     }
-  }
-
-  /**
-   * name
-   */
-  public twitterLogin() {
-    location.href = "/auth/twitter";
   }
 }
 </script>

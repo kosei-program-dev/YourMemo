@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use App\User;
 
 class UserSeeder extends Seeder
@@ -18,6 +19,7 @@ class UserSeeder extends Seeder
             'name' => 'test',
             'email' => 'test@test.com',
             'password' => 'testtest',
+            'api_token' => Str::random(60),
         ]);
     }
 }

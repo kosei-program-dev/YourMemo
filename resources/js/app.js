@@ -8,13 +8,6 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import Vuetify from 'vuetify';
-import 'vuetify/dist/vuetify.min.css';
-import VueRouter from 'vue-router'
-import router from './router'
-
-Vue.use(Vuetify);
-Vue.use(VueRouter)
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -36,6 +29,4 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-    router,
-    vuetify: new Vuetify(),
 });

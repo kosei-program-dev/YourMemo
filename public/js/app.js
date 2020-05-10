@@ -3168,6 +3168,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
+/* harmony import */ var _modules_LogoutConfirmModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/LogoutConfirmModal.vue */ "./resources/ts/components/modules/LogoutConfirmModal.vue");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3177,6 +3178,16 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
 
 let App = class App extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Vue"] {
     constructor() {
@@ -3184,6 +3195,12 @@ let App = class App extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__[
         this.drawer = false;
         this.bottomNav = true;
     }
+    dialogOpen() {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.$refs.dialog.open();
+        });
+    }
+    redirect() { }
 };
 __decorate([
     Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Prop"])(),
@@ -3194,9 +3211,65 @@ __decorate([
     __metadata("design:type", Object)
 ], App.prototype, "errors", void 0);
 App = __decorate([
-    vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"]
+    Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+        components: {
+            LogoutConfirmModal: _modules_LogoutConfirmModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+        }
+    })
 ], App);
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+
+/***/ }),
+
+/***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=script&lang=ts&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/ts-loader??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=script&lang=ts& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+let LogoutConfirmModal = class LogoutConfirmModal extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Vue"] {
+    constructor() {
+        super(...arguments);
+        this.dialog = false;
+        this.csrf = document
+            .querySelector('meta[name="csrf-token"]')
+            .getAttribute("content");
+    }
+    /**
+     * name
+     */
+    open() {
+        this.dialog = true;
+    }
+    /**
+     * name
+     */
+    submit() {
+        document.querySelector("#logout").submit();
+    }
+    /**
+     * name
+     */
+    close() {
+        this.dialog = false;
+    }
+};
+LogoutConfirmModal = __decorate([
+    vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"]
+], LogoutConfirmModal);
+/* harmony default export */ __webpack_exports__["default"] = (LogoutConfirmModal);
 
 
 /***/ }),
@@ -6604,37 +6677,6 @@ var render = function() {
                     [
                       _c(
                         "v-list-item-action",
-                        [_c("v-icon", [_vm._v("mdi-logout")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item-content",
-                        [
-                          _c("v-list-item-title", [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "black--text",
-                                attrs: { href: "/auth/logout" }
-                              },
-                              [_vm._v("Logout")]
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.auth
-                ? _c(
-                    "v-list-item",
-                    [
-                      _c(
-                        "v-list-item-action",
                         [_c("v-icon", [_vm._v("mdi-bell-ring")])],
                         1
                       ),
@@ -6768,7 +6810,42 @@ var render = function() {
               )
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _vm.auth
+            ? _c(
+                "v-list-item",
+                [
+                  _c(
+                    "v-list-item-action",
+                    [_c("v-icon", [_vm._v("mdi-logout")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [
+                      _c("v-list-item-title", [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "black--text",
+                            on: {
+                              click: function($event) {
+                                return _vm.dialogOpen()
+                              }
+                            }
+                          },
+                          [_vm._v("Logout")]
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            : _vm._e()
         ],
         1
       ),
@@ -6796,7 +6873,11 @@ var render = function() {
           _vm._v(" "),
           _c("v-spacer"),
           _vm._v(" "),
-          _c("v-toolbar-title")
+          _vm.auth
+            ? _c("v-toolbar-title", [
+                _vm._v(_vm._s(_vm.auth.name) + " さんでログインしています")
+              ])
+            : _vm._e()
         ],
         1
       ),
@@ -6861,6 +6942,118 @@ var render = function() {
           }
         },
         [_c("span", [_vm._v("© Kosei's Project")])]
+      ),
+      _vm._v(" "),
+      _c("logout-confirm-modal", { ref: "dialog" })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=template&id=627d8ae0&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=template&id=627d8ae0& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-row",
+    { attrs: { justify: "center" } },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { "max-width": "500" },
+          model: {
+            value: _vm.dialog,
+            callback: function($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog"
+          }
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "headline" }, [
+                _vm._v("本当にログアウトして大丈夫ですか？")
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "text-left",
+                          attrs: { color: "green darken-1", text: "" },
+                          on: { click: _vm.close }
+                        },
+                        [_vm._v("キャンセル")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { staticClass: "text-xs-right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "red darken-1", text: "" },
+                          on: {
+                            click: function($event) {
+                              return _vm.submit()
+                            }
+                          }
+                        },
+                        [_vm._v("ログアウト")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-form",
+        { attrs: { method: "POST", action: "/logout", id: "logout" } },
+        [
+          _c("input", {
+            attrs: { type: "hidden", name: "_token" },
+            domProps: { value: _vm.csrf }
+          })
+        ]
       )
     ],
     1
@@ -64809,6 +65002,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/ts/components/modules/LogoutConfirmModal.vue":
+/*!****************************************************************!*\
+  !*** ./resources/ts/components/modules/LogoutConfirmModal.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LogoutConfirmModal_vue_vue_type_template_id_627d8ae0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LogoutConfirmModal.vue?vue&type=template&id=627d8ae0& */ "./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=template&id=627d8ae0&");
+/* harmony import */ var _LogoutConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LogoutConfirmModal.vue?vue&type=script&lang=ts& */ "./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=script&lang=ts&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _LogoutConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _LogoutConfirmModal_vue_vue_type_template_id_627d8ae0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LogoutConfirmModal_vue_vue_type_template_id_627d8ae0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/ts/components/modules/LogoutConfirmModal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=script&lang=ts&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=script&lang=ts& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_5_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/ts-loader??ref--5!../../../../node_modules/vue-loader/lib??vue-loader-options!./LogoutConfirmModal.vue?vue&type=script&lang=ts& */ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=script&lang=ts&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_5_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=template&id=627d8ae0&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=template&id=627d8ae0& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_template_id_627d8ae0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./LogoutConfirmModal.vue?vue&type=template&id=627d8ae0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=template&id=627d8ae0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_template_id_627d8ae0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_template_id_627d8ae0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/ts/components/pages/EveryoneNote.vue":
 /*!********************************************************!*\
   !*** ./resources/ts/components/pages/EveryoneNote.vue ***!
@@ -65575,8 +65837,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/resources/ts/app.ts */"./resources/ts/app.ts");
-module.exports = __webpack_require__(/*! /var/www/html/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\YourMemo\resources\ts\app.ts */"./resources/ts/app.ts");
+module.exports = __webpack_require__(/*! C:\YourMemo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

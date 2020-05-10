@@ -45,6 +45,7 @@
                   </v-card-actions>
                 </v-form>
               </ValidationObserver>
+              <!-- <login-confirm-modal ref="dialog"></login-confirm-modal> -->
               <!-- <v-col cols="12" md="12">
                 <v-card-title class="cyan" @click="twitterLogin()">
                   <v-icon large left>mdi-twitter</v-icon>
@@ -65,17 +66,23 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import { ValidationObserver } from "vee-validate";
+// import LoginConfirmModal from "../modules/confirm/LoginConfirmModal.vue";
 
 @Component
+// ({
+//   components: {
+//     LoginConfirmModal
+//   }
+// })
 export default class Login extends Vue {
   email: string = "";
   password: string = "";
   csrf: string | null = document
     .querySelector('meta[name="csrf-token"]')!
     .getAttribute("content");
-
   $refs!: {
     observer: InstanceType<typeof ValidationObserver>;
+    // dialog: LoginConfirmModal;
   };
 
   public async login() {

@@ -150,7 +150,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import LogoutConfirmModal from "./modules/LogoutConfirmModal.vue";
+import LogoutConfirmModal from "./modules/confirm/LogoutConfirmModal.vue";
 
 @Component({
   components: {

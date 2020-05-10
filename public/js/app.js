@@ -3168,7 +3168,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
-/* harmony import */ var _modules_LogoutConfirmModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/LogoutConfirmModal.vue */ "./resources/ts/components/modules/LogoutConfirmModal.vue");
+/* harmony import */ var _modules_confirm_LogoutConfirmModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/confirm/LogoutConfirmModal.vue */ "./resources/ts/components/modules/confirm/LogoutConfirmModal.vue");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3213,7 +3213,7 @@ __decorate([
 App = __decorate([
     Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"])({
         components: {
-            LogoutConfirmModal: _modules_LogoutConfirmModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+            LogoutConfirmModal: _modules_confirm_LogoutConfirmModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
         }
     })
 ], App);
@@ -3222,10 +3222,10 @@ App = __decorate([
 
 /***/ }),
 
-/***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=script&lang=ts&":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/ts-loader??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=script&lang=ts& ***!
-  \****************************************************************************************************************************************************************************/
+/***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/confirm/LogoutConfirmModal.vue?vue&type=script&lang=ts&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/ts-loader??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/modules/confirm/LogoutConfirmModal.vue?vue&type=script&lang=ts& ***!
+  \************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3346,7 +3346,14 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
     });
 };
 
-let Login = class Login extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Vue"] {
+// import LoginConfirmModal from "../modules/confirm/LoginConfirmModal.vue";
+let Login = 
+// ({
+//   components: {
+//     LoginConfirmModal
+//   }
+// })
+class Login extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Vue"] {
     constructor() {
         super(...arguments);
         this.email = "";
@@ -3372,6 +3379,11 @@ let Login = class Login extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_
 };
 Login = __decorate([
     vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"]
+    // ({
+    //   components: {
+    //     LoginConfirmModal
+    //   }
+    // })
 ], Login);
 /* harmony default export */ __webpack_exports__["default"] = (Login);
 
@@ -6956,10 +6968,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=template&id=627d8ae0&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=template&id=627d8ae0& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/confirm/LogoutConfirmModal.vue?vue&type=template&id=dfff23e2&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/modules/confirm/LogoutConfirmModal.vue?vue&type=template&id=dfff23e2& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65002,18 +65014,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/ts/components/modules/LogoutConfirmModal.vue":
-/*!****************************************************************!*\
-  !*** ./resources/ts/components/modules/LogoutConfirmModal.vue ***!
-  \****************************************************************/
+/***/ "./resources/ts/components/modules/confirm/LogoutConfirmModal.vue":
+/*!************************************************************************!*\
+  !*** ./resources/ts/components/modules/confirm/LogoutConfirmModal.vue ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _LogoutConfirmModal_vue_vue_type_template_id_627d8ae0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LogoutConfirmModal.vue?vue&type=template&id=627d8ae0& */ "./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=template&id=627d8ae0&");
-/* harmony import */ var _LogoutConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LogoutConfirmModal.vue?vue&type=script&lang=ts& */ "./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=script&lang=ts&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _LogoutConfirmModal_vue_vue_type_template_id_dfff23e2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LogoutConfirmModal.vue?vue&type=template&id=dfff23e2& */ "./resources/ts/components/modules/confirm/LogoutConfirmModal.vue?vue&type=template&id=dfff23e2&");
+/* harmony import */ var _LogoutConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LogoutConfirmModal.vue?vue&type=script&lang=ts& */ "./resources/ts/components/modules/confirm/LogoutConfirmModal.vue?vue&type=script&lang=ts&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -65023,8 +65035,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _LogoutConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _LogoutConfirmModal_vue_vue_type_template_id_627d8ae0___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _LogoutConfirmModal_vue_vue_type_template_id_627d8ae0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _LogoutConfirmModal_vue_vue_type_template_id_dfff23e2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LogoutConfirmModal_vue_vue_type_template_id_dfff23e2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -65034,38 +65046,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/ts/components/modules/LogoutConfirmModal.vue"
+component.options.__file = "resources/ts/components/modules/confirm/LogoutConfirmModal.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=script&lang=ts&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=script&lang=ts& ***!
-  \*****************************************************************************************/
+/***/ "./resources/ts/components/modules/confirm/LogoutConfirmModal.vue?vue&type=script&lang=ts&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/ts/components/modules/confirm/LogoutConfirmModal.vue?vue&type=script&lang=ts& ***!
+  \*************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_ts_loader_index_js_ref_5_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/ts-loader??ref--5!../../../../node_modules/vue-loader/lib??vue-loader-options!./LogoutConfirmModal.vue?vue&type=script&lang=ts& */ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=script&lang=ts&");
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_5_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/ts-loader??ref--5!../../../../../node_modules/vue-loader/lib??vue-loader-options!./LogoutConfirmModal.vue?vue&type=script&lang=ts& */ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/confirm/LogoutConfirmModal.vue?vue&type=script&lang=ts&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_5_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=template&id=627d8ae0&":
-/*!***********************************************************************************************!*\
-  !*** ./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=template&id=627d8ae0& ***!
-  \***********************************************************************************************/
+/***/ "./resources/ts/components/modules/confirm/LogoutConfirmModal.vue?vue&type=template&id=dfff23e2&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/ts/components/modules/confirm/LogoutConfirmModal.vue?vue&type=template&id=dfff23e2& ***!
+  \*******************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_template_id_627d8ae0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./LogoutConfirmModal.vue?vue&type=template&id=627d8ae0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/LogoutConfirmModal.vue?vue&type=template&id=627d8ae0&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_template_id_627d8ae0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_template_id_dfff23e2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./LogoutConfirmModal.vue?vue&type=template&id=dfff23e2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/confirm/LogoutConfirmModal.vue?vue&type=template&id=dfff23e2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_template_id_dfff23e2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_template_id_627d8ae0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_template_id_dfff23e2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

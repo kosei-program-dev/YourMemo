@@ -59,17 +59,6 @@
 
         <v-list-item v-if="auth">
           <v-list-item-action>
-            <v-icon>mdi-logout</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>
-              <a class="black--text" href="/auth/logout">Logout</a>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item v-if="auth">
-          <v-list-item-action>
             <v-icon>mdi-bell-ring</v-icon>
           </v-list-item-action>
           <v-list-item-content>
@@ -112,6 +101,17 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+
+      <v-list-item v-if="auth">
+        <v-list-item-action>
+          <v-icon>mdi-logout</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>
+            <a class="black--text" @click="dialogOpen()">Logout</a>
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
     </v-navigation-drawer>
 
     <v-app-bar app clipped-left color="blue darken-3 white--text">
@@ -119,7 +119,7 @@
       <v-toolbar-title>YourMemo ~あなたのメモ~</v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-toolbar-title></v-toolbar-title>
+      <v-toolbar-title v-if="auth">{{auth.name}} さんでログインしています</v-toolbar-title>
     </v-app-bar>
 
     <router-view></router-view>
@@ -144,15 +144,31 @@
     <v-footer app clipped-center color="blue darken-3 white--text">
       <span>&copy; Kosei's Project</span>
     </v-footer>
+    <logout-confirm-modal ref="dialog"></logout-confirm-modal>
   </v-app>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-@Component
+import LogoutConfirmModal from "./modules/LogoutConfirmModal.vue";
+
+@Component({
+  components: {
+    LogoutConfirmModal
+  }
+})
 export default class App extends Vue {
   drawer: boolean = false;
   bottomNav: boolean = true;
+
+  $refs!: {
+    dialog: LogoutConfirmModal;
+  };
+
+  public async dialogOpen() {
+    this.$refs.dialog.open();
+  }
+  private redirect() {}
   @Prop()
   auth!: any;
 

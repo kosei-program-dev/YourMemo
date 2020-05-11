@@ -19,7 +19,7 @@ class NoteSeeder extends Seeder
             'user_id'    => 1,
             'comment'    => 'test comment',
             'url'        => 'test url',
-            'evaluation' => $faker->numberBetween(1,5),
+            'evaluation' => $faker->randomFloat(1,1,5),
         ]);
     }
 }

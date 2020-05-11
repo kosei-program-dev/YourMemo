@@ -6897,54 +6897,6 @@ var render = function() {
       _c("router-view"),
       _vm._v(" "),
       _c(
-        "v-bottom-navigation",
-        {
-          model: {
-            value: _vm.bottomNav,
-            callback: function($$v) {
-              _vm.bottomNav = $$v
-            },
-            expression: "bottomNav"
-          }
-        },
-        [
-          _c(
-            "v-btn",
-            { attrs: { value: "recent" } },
-            [
-              _c("span", [_vm._v("Recent")]),
-              _vm._v(" "),
-              _c("v-icon", [_vm._v("mdi-history")])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            { attrs: { value: "favorites" } },
-            [
-              _c("span", [_vm._v("Favorites")]),
-              _vm._v(" "),
-              _c("v-icon", [_vm._v("mdi-heart")])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            { attrs: { value: "nearby" } },
-            [
-              _c("span", [_vm._v("Nearby")]),
-              _vm._v(" "),
-              _c("v-icon", [_vm._v("mdi-map-marker")])
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
         "v-footer",
         {
           attrs: {
@@ -65849,8 +65801,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\YourMemo\resources\ts\app.ts */"./resources/ts/app.ts");
-module.exports = __webpack_require__(/*! C:\YourMemo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/resources/ts/app.ts */"./resources/ts/app.ts");
+module.exports = __webpack_require__(/*! /var/www/html/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

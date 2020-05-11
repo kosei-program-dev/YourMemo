@@ -124,7 +124,7 @@
 
     <router-view></router-view>
 
-    <v-bottom-navigation v-model="bottomNav">
+    <!-- <v-bottom-navigation v-model="bottomNav">
       <v-btn value="recent">
         <span>Recent</span>
         <v-icon>mdi-history</v-icon>
@@ -139,7 +139,7 @@
         <span>Nearby</span>
         <v-icon>mdi-map-marker</v-icon>
       </v-btn>
-    </v-bottom-navigation>
+    </v-bottom-navigation>-->
 
     <v-footer app clipped-center color="blue darken-3 white--text">
       <span>&copy; Kosei's Project</span>

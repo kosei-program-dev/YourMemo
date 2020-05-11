@@ -74,7 +74,7 @@
                     </ValidationProvider>
                   </v-col>
                   <v-card-actions>
-                    <v-btn primary large block class="primary" @click="register()">Register</v-btn>
+                    <v-btn primary large block class="primary" @click="registerConfirm()">登録する</v-btn>
                   </v-card-actions>
                 </v-form>
               </ValidationObserver>
@@ -83,31 +83,48 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <register-confirm-modal ref="dialog" :registerObj="registerObj"></register-confirm-modal>
   </v-content>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { ValidationObserver } from "vee-validate";
+import RegisterConfirmModal from "../modules/confirm/RegisterConfirmModal.vue";
+import { RegisterObject } from "../../vue-data-entity/RegisterObject";
 
-@Component
-export default class Login extends Vue {
+@Component({
+  components: {
+    RegisterConfirmModal
+  }
+})
+export default class Register extends Vue {
   name: string = "";
   email: string = "";
   password: string = "";
   password_confirmation = "";
+  registerObj: RegisterObject = {
+    name: "",
+    email: "",
+    password: ""
+  };
   csrf: string | null = document
     .querySelector('meta[name="csrf-token"]')!
     .getAttribute("content");
 
   $refs!: {
     observer: InstanceType<typeof ValidationObserver>;
+    dialog: RegisterConfirmModal;
   };
 
-  public async register() {
+  public async registerConfirm() {
     const isValid = await this.$refs.observer.validate();
     if (isValid) {
-      (<HTMLFormElement>document.querySelector("#register")).submit();
+      this.registerObj.name = this.name;
+      this.registerObj.email = this.email;
+      this.registerObj.password = this.password;
+      this.$refs.dialog.open();
+      //   (<HTMLFormElement>document.querySelector("#register")).submit();
     }
   }
 }

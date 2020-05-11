@@ -3274,6 +3274,65 @@ LogoutConfirmModal = __decorate([
 
 /***/ }),
 
+/***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/confirm/RegisterConfirmModal.vue?vue&type=script&lang=ts&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/ts-loader??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/modules/confirm/RegisterConfirmModal.vue?vue&type=script&lang=ts& ***!
+  \**************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+let RegisterConfirmModal = class RegisterConfirmModal extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Vue"] {
+    constructor() {
+        super(...arguments);
+        this.dialog = false;
+        this.csrf = document
+            .querySelector('meta[name="csrf-token"]')
+            .getAttribute("content");
+    }
+    /**
+     * name
+     */
+    open() {
+        this.dialog = true;
+    }
+    /**
+     * name
+     */
+    submit() {
+        document.querySelector("#register").submit();
+    }
+    /**
+     * name
+     */
+    close() {
+        this.dialog = false;
+    }
+};
+__decorate([
+    Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Prop"])(),
+    __metadata("design:type", Object)
+], RegisterConfirmModal.prototype, "registerObj", void 0);
+RegisterConfirmModal = __decorate([
+    vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"]
+], RegisterConfirmModal);
+/* harmony default export */ __webpack_exports__["default"] = (RegisterConfirmModal);
+
+
+/***/ }),
+
 /***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/pages/EveryoneNote.vue?vue&type=script&lang=ts&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/ts-loader??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/pages/EveryoneNote.vue?vue&type=script&lang=ts& ***!
@@ -3400,6 +3459,7 @@ Login = __decorate([
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
+/* harmony import */ var _modules_confirm_RegisterConfirmModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/confirm/RegisterConfirmModal.vue */ "./resources/ts/components/modules/confirm/RegisterConfirmModal.vue");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3416,30 +3476,44 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
     });
 };
 
-let Login = class Login extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Vue"] {
+
+let Register = class Register extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Vue"] {
     constructor() {
         super(...arguments);
         this.name = "";
         this.email = "";
         this.password = "";
         this.password_confirmation = "";
+        this.registerObj = {
+            name: "",
+            email: "",
+            password: ""
+        };
         this.csrf = document
             .querySelector('meta[name="csrf-token"]')
             .getAttribute("content");
     }
-    register() {
+    registerConfirm() {
         return __awaiter(this, void 0, void 0, function* () {
             const isValid = yield this.$refs.observer.validate();
             if (isValid) {
-                document.querySelector("#register").submit();
+                this.registerObj.name = this.name;
+                this.registerObj.email = this.email;
+                this.registerObj.password = this.password;
+                this.$refs.dialog.open();
+                //   (<HTMLFormElement>document.querySelector("#register")).submit();
             }
         });
     }
 };
-Login = __decorate([
-    vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"]
-], Login);
-/* harmony default export */ __webpack_exports__["default"] = (Login);
+Register = __decorate([
+    Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+        components: {
+            RegisterConfirmModal: _modules_confirm_RegisterConfirmModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+        }
+    })
+], Register);
+/* harmony default export */ __webpack_exports__["default"] = (Register);
 
 
 /***/ }),
@@ -7030,6 +7104,185 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/confirm/RegisterConfirmModal.vue?vue&type=template&id=e0add5b0&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/modules/confirm/RegisterConfirmModal.vue?vue&type=template&id=e0add5b0& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-row",
+    { attrs: { justify: "center" } },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { "max-width": "500" },
+          model: {
+            value: _vm.dialog,
+            callback: function($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog"
+          }
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "headline" }, [
+                _vm._v("登録内容を確認してください。")
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                { staticClass: "d-flex flex-column" },
+                [
+                  _c(
+                    "v-chip",
+                    {
+                      staticClass: "ma-2",
+                      attrs: {
+                        color: "blue",
+                        label: "",
+                        "text-color": "white",
+                        cols: "12",
+                        md: "12"
+                      }
+                    },
+                    [
+                      _c("v-icon", { attrs: { left: "" } }, [
+                        _vm._v("mdi-account-circle")
+                      ]),
+                      _vm._v(
+                        "\n          氏名:" +
+                          _vm._s(_vm.registerObj.name) +
+                          "\n        "
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-chip",
+                    {
+                      staticClass: "ma-2",
+                      attrs: {
+                        color: "blue",
+                        label: "",
+                        "text-color": "white",
+                        cols: "12",
+                        md: "12"
+                      }
+                    },
+                    [
+                      _c("v-icon", { attrs: { left: "" } }, [
+                        _vm._v("mdi-email")
+                      ]),
+                      _vm._v(
+                        "\n          Eメール:" +
+                          _vm._s(_vm.registerObj.email) +
+                          "\n        "
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-chip",
+                    {
+                      staticClass: "ma-2",
+                      attrs: {
+                        color: "blue",
+                        label: "",
+                        "text-color": "white",
+                        cols: "12",
+                        md: "12"
+                      }
+                    },
+                    [
+                      _c("v-icon", { attrs: { left: "" } }, [
+                        _vm._v("mdi-lock")
+                      ]),
+                      _vm._v(
+                        "パスワード: セキュリティ保護のため非表示\n        "
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "text-left",
+                          attrs: { color: "green darken-1", text: "" },
+                          on: { click: _vm.close }
+                        },
+                        [_vm._v("キャンセル")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { staticClass: "text-xs-right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "red darken-1", text: "" },
+                          on: {
+                            click: function($event) {
+                              return _vm.submit()
+                            }
+                          }
+                        },
+                        [_vm._v("登録する")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/pages/EveryoneNote.vue?vue&type=template&id=da354c6e&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/pages/EveryoneNote.vue?vue&type=template&id=da354c6e& ***!
@@ -7698,11 +7951,11 @@ var render = function() {
                                           },
                                           on: {
                                             click: function($event) {
-                                              return _vm.register()
+                                              return _vm.registerConfirm()
                                             }
                                           }
                                         },
-                                        [_vm._v("Register")]
+                                        [_vm._v("登録する")]
                                       )
                                     ],
                                     1
@@ -7727,7 +7980,12 @@ var render = function() {
           )
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      _c("register-confirm-modal", {
+        ref: "dialog",
+        attrs: { registerObj: _vm.registerObj }
+      })
     ],
     1
   )
@@ -65030,6 +65288,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_template_id_dfff23e2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LogoutConfirmModal_vue_vue_type_template_id_dfff23e2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/ts/components/modules/confirm/RegisterConfirmModal.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/ts/components/modules/confirm/RegisterConfirmModal.vue ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RegisterConfirmModal_vue_vue_type_template_id_e0add5b0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RegisterConfirmModal.vue?vue&type=template&id=e0add5b0& */ "./resources/ts/components/modules/confirm/RegisterConfirmModal.vue?vue&type=template&id=e0add5b0&");
+/* harmony import */ var _RegisterConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RegisterConfirmModal.vue?vue&type=script&lang=ts& */ "./resources/ts/components/modules/confirm/RegisterConfirmModal.vue?vue&type=script&lang=ts&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RegisterConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RegisterConfirmModal_vue_vue_type_template_id_e0add5b0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RegisterConfirmModal_vue_vue_type_template_id_e0add5b0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/ts/components/modules/confirm/RegisterConfirmModal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/ts/components/modules/confirm/RegisterConfirmModal.vue?vue&type=script&lang=ts&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/ts/components/modules/confirm/RegisterConfirmModal.vue?vue&type=script&lang=ts& ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_5_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/ts-loader??ref--5!../../../../../node_modules/vue-loader/lib??vue-loader-options!./RegisterConfirmModal.vue?vue&type=script&lang=ts& */ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/confirm/RegisterConfirmModal.vue?vue&type=script&lang=ts&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_5_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/ts/components/modules/confirm/RegisterConfirmModal.vue?vue&type=template&id=e0add5b0&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/ts/components/modules/confirm/RegisterConfirmModal.vue?vue&type=template&id=e0add5b0& ***!
+  \*********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterConfirmModal_vue_vue_type_template_id_e0add5b0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./RegisterConfirmModal.vue?vue&type=template&id=e0add5b0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/confirm/RegisterConfirmModal.vue?vue&type=template&id=e0add5b0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterConfirmModal_vue_vue_type_template_id_e0add5b0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterConfirmModal_vue_vue_type_template_id_e0add5b0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

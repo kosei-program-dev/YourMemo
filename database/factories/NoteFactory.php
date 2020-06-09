@@ -11,6 +11,7 @@ $factory->define(Note::class, function (Faker $faker) {
 
     return [
         'user_id'    => $user_id,
+        'title'      => $faker->title(),
         'comment'    => $faker->realText(20),
         'url'        => $faker->url(),
         'evaluation' => $evaluation,

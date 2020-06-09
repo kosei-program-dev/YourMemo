@@ -17,6 +17,7 @@ class NoteSeeder extends Seeder
         Note::truncate();
         Note::create([
             'user_id'    => 1,
+            'title'      => 'test title',
             'comment'    => 'test comment',
             'url'        => 'test url',
             'evaluation' => $faker->randomFloat(1,1,5),

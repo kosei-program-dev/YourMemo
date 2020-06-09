@@ -6,6 +6,7 @@
         <thead>
           <tr>
             <th class="text-left">番号</th>
+            <th class="text-left">タイトル</th>
             <th class="text-left">ひとことメモ</th>
             <th class="text-left">URL</th>
             <th class="text-left">アップロード日時</th>
@@ -18,6 +19,7 @@
             <td>
               <v-icon @click="download(item.id)">mdi-cloud-download-outline</v-icon>
             </td>
+            <td>{{ item.title }}</td>
             <td>{{ item.comment }}</td>
             <td style="white-space:pre-wrap; word-wrap:break-word;">{{ item.url }}</td>
             <td>{{ item.created_at }}</td>

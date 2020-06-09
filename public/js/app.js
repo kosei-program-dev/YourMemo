@@ -3194,16 +3194,6 @@ let App = class App extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__[
         super(...arguments);
         this.drawer = false;
         this.bottomNav = true;
-        this.snackMessage = false;
-        this.flashMessage = false;
-    }
-    created() {
-        if (this.errors.length !== 0) {
-            this.snackMessage = true;
-        }
-        if (this.flash) {
-            this.flashMessage = true;
-        }
     }
     dialogOpen() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -3220,10 +3210,6 @@ __decorate([
     Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Prop"])(),
     __metadata("design:type", Object)
 ], App.prototype, "errors", void 0);
-__decorate([
-    Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Prop"])({ default: null }),
-    __metadata("design:type", Object)
-], App.prototype, "flash", void 0);
 App = __decorate([
     Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"])({
         components: {
@@ -7120,60 +7106,6 @@ var render = function() {
         [_c("span", [_vm._v("© Kosei's Project")])]
       ),
       _vm._v(" "),
-      _c(
-        "v-snackbar",
-        {
-          attrs: { color: "error", top: true, vertical: "" },
-          model: {
-            value: _vm.snackMessage,
-            callback: function($$v) {
-              _vm.snackMessage = $$v
-            },
-            expression: "snackMessage"
-          }
-        },
-        [
-          _vm._v("\n    サーバー内部でエラーが発生しました。\n    "),
-          _vm._l(_vm.errors, function(error, key, index) {
-            return _c("div", { key: index }, [_vm._v(_vm._s(error.toString()))])
-          }),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            {
-              attrs: { dark: "", text: "" },
-              on: {
-                click: function($event) {
-                  _vm.snackMessage = false
-                }
-              }
-            },
-            [_vm._v("x")]
-          )
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _c(
-        "v-snackbar",
-        {
-          attrs: {
-            vertical: true,
-            color: "success",
-            timeout: 2000,
-            default: false
-          },
-          model: {
-            value: _vm.flashMessage,
-            callback: function($$v) {
-              _vm.flashMessage = $$v
-            },
-            expression: "flashMessage"
-          }
-        },
-        [_vm._v(_vm._s(_vm.flash))]
-      ),
-      _vm._v(" "),
       _c("logout-confirm-modal", { ref: "dialog" })
     ],
     1
@@ -8439,11 +8371,11 @@ var render = function() {
                                                     required: ""
                                                   },
                                                   model: {
-                                                    value: _vm.name,
+                                                    value: _vm.title,
                                                     callback: function($$v) {
-                                                      _vm.name = $$v
+                                                      _vm.title = $$v
                                                     },
-                                                    expression: "name"
+                                                    expression: "title"
                                                   }
                                                 })
                                               ]

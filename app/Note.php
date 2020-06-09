@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
 {
-    protected $casts = [
+    protected $fillable = [
+        'user_id','title','comment'
     ];
 }

@@ -1,5 +1,6 @@
 export interface NoteObject {
     id: number;
+    title: string;
     comment: string;
     previewImage?: string;
     preview_image?: string;

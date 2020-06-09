@@ -3194,6 +3194,16 @@ let App = class App extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__[
         super(...arguments);
         this.drawer = false;
         this.bottomNav = true;
+        this.snackMessage = false;
+        this.flashMessage = false;
+    }
+    created() {
+        if (this.errors.length !== 0) {
+            this.snackMessage = true;
+        }
+        if (this.flash) {
+            this.flashMessage = true;
+        }
     }
     dialogOpen() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -3210,6 +3220,10 @@ __decorate([
     Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Prop"])(),
     __metadata("design:type", Object)
 ], App.prototype, "errors", void 0);
+__decorate([
+    Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Prop"])({ default: null }),
+    __metadata("design:type", Object)
+], App.prototype, "flash", void 0);
 App = __decorate([
     Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"])({
         components: {
@@ -3329,6 +3343,65 @@ RegisterConfirmModal = __decorate([
     vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"]
 ], RegisterConfirmModal);
 /* harmony default export */ __webpack_exports__["default"] = (RegisterConfirmModal);
+
+
+/***/ }),
+
+/***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue?vue&type=script&lang=ts&":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/ts-loader??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue?vue&type=script&lang=ts& ***!
+  \******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+let RegisterNoteConfirmModal = class RegisterNoteConfirmModal extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Vue"] {
+    constructor() {
+        super(...arguments);
+        this.dialog = false;
+        this.csrf = document
+            .querySelector('meta[name="csrf-token"]')
+            .getAttribute("content");
+    }
+    /**
+     * name
+     */
+    open() {
+        this.dialog = true;
+    }
+    /**
+     * name
+     */
+    submit() {
+        document.querySelector("#registerNote").submit();
+    }
+    /**
+     * name
+     */
+    close() {
+        this.dialog = false;
+    }
+};
+__decorate([
+    Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Prop"])(),
+    __metadata("design:type", Object)
+], RegisterNoteConfirmModal.prototype, "registerNoteObj", void 0);
+RegisterNoteConfirmModal = __decorate([
+    vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"]
+], RegisterNoteConfirmModal);
+/* harmony default export */ __webpack_exports__["default"] = (RegisterNoteConfirmModal);
 
 
 /***/ }),
@@ -3510,6 +3583,71 @@ Register = __decorate([
     Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"])({
         components: {
             RegisterConfirmModal: _modules_confirm_RegisterConfirmModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+        }
+    })
+], Register);
+/* harmony default export */ __webpack_exports__["default"] = (Register);
+
+
+/***/ }),
+
+/***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/pages/RegisterNote.vue?vue&type=script&lang=ts&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/ts-loader??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/pages/RegisterNote.vue?vue&type=script&lang=ts& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
+/* harmony import */ var _modules_confirm_RegisterNoteConfirmModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/confirm/RegisterNoteConfirmModal.vue */ "./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+let Register = class Register extends vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Vue"] {
+    constructor() {
+        super(...arguments);
+        this.title = "";
+        this.comment = "";
+        this.registerNoteObj = {
+            title: "",
+            comment: ""
+        };
+        this.csrf = document
+            .querySelector('meta[name="csrf-token"]')
+            .getAttribute("content");
+    }
+    registerNoteConfirm() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const isValid = yield this.$refs.observer.validate();
+            if (isValid) {
+                this.registerNoteObj.title = this.title;
+                this.registerNoteObj.comment = this.comment;
+                this.$refs.dialog.open();
+                //   (<HTMLFormElement>document.querySelector("#register")).submit();
+            }
+        });
+    }
+};
+Register = __decorate([
+    Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+        components: {
+            RegisterNoteConfirmModal: _modules_confirm_RegisterNoteConfirmModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
         }
     })
 ], Register);
@@ -6982,6 +7120,60 @@ var render = function() {
         [_c("span", [_vm._v("© Kosei's Project")])]
       ),
       _vm._v(" "),
+      _c(
+        "v-snackbar",
+        {
+          attrs: { color: "error", top: true, vertical: "" },
+          model: {
+            value: _vm.snackMessage,
+            callback: function($$v) {
+              _vm.snackMessage = $$v
+            },
+            expression: "snackMessage"
+          }
+        },
+        [
+          _vm._v("\n    サーバー内部でエラーが発生しました。\n    "),
+          _vm._l(_vm.errors, function(error, key, index) {
+            return _c("div", { key: index }, [_vm._v(_vm._s(error.toString()))])
+          }),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            {
+              attrs: { dark: "", text: "" },
+              on: {
+                click: function($event) {
+                  _vm.snackMessage = false
+                }
+              }
+            },
+            [_vm._v("x")]
+          )
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "v-snackbar",
+        {
+          attrs: {
+            vertical: true,
+            color: "success",
+            timeout: 2000,
+            default: false
+          },
+          model: {
+            value: _vm.flashMessage,
+            callback: function($$v) {
+              _vm.flashMessage = $$v
+            },
+            expression: "flashMessage"
+          }
+        },
+        [_vm._v(_vm._s(_vm.flash))]
+      ),
+      _vm._v(" "),
       _c("logout-confirm-modal", { ref: "dialog" })
     ],
     1
@@ -7283,6 +7475,162 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue?vue&type=template&id=c976e88c&":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue?vue&type=template&id=c976e88c& ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-row",
+    { attrs: { justify: "center" } },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { "max-width": "500" },
+          model: {
+            value: _vm.dialog,
+            callback: function($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog"
+          }
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "headline" }, [
+                _vm._v("登録内容を確認してください。")
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                { staticClass: "d-flex flex-column" },
+                [
+                  _c(
+                    "v-chip",
+                    {
+                      staticClass: "ma-2",
+                      attrs: {
+                        color: "blue",
+                        label: "",
+                        "text-color": "white",
+                        cols: "12",
+                        md: "12"
+                      }
+                    },
+                    [
+                      _c("v-icon", { attrs: { left: "" } }, [
+                        _vm._v("mdi-account-circle")
+                      ]),
+                      _vm._v(
+                        "\n          タイトル:" +
+                          _vm._s(_vm.registerNoteObj.title) +
+                          "\n        "
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-chip",
+                    {
+                      staticClass: "ma-2",
+                      attrs: {
+                        color: "blue",
+                        label: "",
+                        "text-color": "white",
+                        cols: "12",
+                        md: "12"
+                      }
+                    },
+                    [
+                      _c("v-icon", { attrs: { left: "" } }, [
+                        _vm._v("mdi-email")
+                      ]),
+                      _vm._v(
+                        "\n          ひとことメモ:" +
+                          _vm._s(_vm.registerNoteObj.comment) +
+                          "\n        "
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "text-left",
+                          attrs: { color: "green darken-1", text: "" },
+                          on: { click: _vm.close }
+                        },
+                        [_vm._v("キャンセル")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { staticClass: "text-xs-right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "red darken-1", text: "" },
+                          on: {
+                            click: function($event) {
+                              return _vm.submit()
+                            }
+                          }
+                        },
+                        [_vm._v("登録する")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/pages/EveryoneNote.vue?vue&type=template&id=da354c6e&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/ts/components/pages/EveryoneNote.vue?vue&type=template&id=da354c6e& ***!
@@ -7313,6 +7661,10 @@ var render = function() {
                 _c("thead", [
                   _c("tr", [
                     _c("th", { staticClass: "text-left" }, [_vm._v("番号")]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [
+                      _vm._v("タイトル")
+                    ]),
                     _vm._v(" "),
                     _c("th", { staticClass: "text-left" }, [
                       _vm._v("ひとことメモ")
@@ -7349,6 +7701,8 @@ var render = function() {
                         ],
                         1
                       ),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(item.title))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(item.comment))]),
                       _vm._v(" "),
@@ -8012,7 +8366,181 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-content", [_c("h1", [_vm._v("RegisterNote Page")])])
+  return _c(
+    "v-content",
+    [
+      _c(
+        "v-container",
+        [
+          _c(
+            "v-layout",
+            { staticClass: "text-xs-center", attrs: { row: "" } },
+            [
+              _c(
+                "v-flex",
+                { staticClass: "grey lighten-4" },
+                [
+                  _c(
+                    "v-container",
+                    { staticClass: "text-xs-center" },
+                    [
+                      _c(
+                        "v-card",
+                        { attrs: { flat: "" } },
+                        [
+                          _c(
+                            "v-card-title",
+                            { attrs: { "primary-title": "" } },
+                            [_c("h4", [_vm._v("RegisterNote")])]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "ValidationObserver",
+                            { ref: "observer" },
+                            [
+                              _c(
+                                "v-form",
+                                {
+                                  attrs: {
+                                    method: "POST",
+                                    action: "/registerNote",
+                                    id: "registerNote"
+                                  }
+                                },
+                                [
+                                  _c("input", {
+                                    attrs: { type: "hidden", name: "_token" },
+                                    domProps: { value: _vm.csrf }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12", md: "12" } },
+                                    [
+                                      _c("ValidationProvider", {
+                                        attrs: {
+                                          name: "title",
+                                          rules: "required|max:100"
+                                        },
+                                        scopedSlots: _vm._u([
+                                          {
+                                            key: "default",
+                                            fn: function(ref) {
+                                              var errors = ref.errors
+                                              return [
+                                                _c("v-text-field", {
+                                                  attrs: {
+                                                    "prepend-icon":
+                                                      "mdi-account-circle",
+                                                    name: "title",
+                                                    counter: 100,
+                                                    "error-messages": errors,
+                                                    label: "タイトル",
+                                                    required: ""
+                                                  },
+                                                  model: {
+                                                    value: _vm.name,
+                                                    callback: function($$v) {
+                                                      _vm.name = $$v
+                                                    },
+                                                    expression: "name"
+                                                  }
+                                                })
+                                              ]
+                                            }
+                                          }
+                                        ])
+                                      }),
+                                      _vm._v(" "),
+                                      _c("ValidationProvider", {
+                                        attrs: {
+                                          name: "comment",
+                                          rules: "required|max:100"
+                                        },
+                                        scopedSlots: _vm._u([
+                                          {
+                                            key: "default",
+                                            fn: function(ref) {
+                                              var errors = ref.errors
+                                              return [
+                                                _c("v-text-field", {
+                                                  attrs: {
+                                                    "prepend-icon": "mdi-email",
+                                                    name: "comment",
+                                                    counter: 100,
+                                                    "error-messages": errors,
+                                                    label: "ひとことメモ",
+                                                    required: ""
+                                                  },
+                                                  model: {
+                                                    value: _vm.comment,
+                                                    callback: function($$v) {
+                                                      _vm.comment = $$v
+                                                    },
+                                                    expression: "comment"
+                                                  }
+                                                })
+                                              ]
+                                            }
+                                          }
+                                        ])
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-card-actions",
+                                    [
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          staticClass: "primary",
+                                          attrs: {
+                                            primary: "",
+                                            large: "",
+                                            block: ""
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.registerNoteConfirm()
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("登録する")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("register-note-confirm-modal", {
+        ref: "dialog",
+        attrs: { registerNoteObj: _vm.registerNoteObj }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -65362,6 +65890,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue":
+/*!******************************************************************************!*\
+  !*** ./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RegisterNoteConfirmModal_vue_vue_type_template_id_c976e88c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RegisterNoteConfirmModal.vue?vue&type=template&id=c976e88c& */ "./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue?vue&type=template&id=c976e88c&");
+/* harmony import */ var _RegisterNoteConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RegisterNoteConfirmModal.vue?vue&type=script&lang=ts& */ "./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue?vue&type=script&lang=ts&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RegisterNoteConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RegisterNoteConfirmModal_vue_vue_type_template_id_c976e88c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RegisterNoteConfirmModal_vue_vue_type_template_id_c976e88c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue?vue&type=script&lang=ts&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue?vue&type=script&lang=ts& ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_5_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterNoteConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/ts-loader??ref--5!../../../../../node_modules/vue-loader/lib??vue-loader-options!./RegisterNoteConfirmModal.vue?vue&type=script&lang=ts& */ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue?vue&type=script&lang=ts&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_5_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterNoteConfirmModal_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue?vue&type=template&id=c976e88c&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue?vue&type=template&id=c976e88c& ***!
+  \*************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterNoteConfirmModal_vue_vue_type_template_id_c976e88c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./RegisterNoteConfirmModal.vue?vue&type=template&id=c976e88c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/modules/confirm/RegisterNoteConfirmModal.vue?vue&type=template&id=c976e88c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterNoteConfirmModal_vue_vue_type_template_id_c976e88c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterNoteConfirmModal_vue_vue_type_template_id_c976e88c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/ts/components/pages/EveryoneNote.vue":
 /*!********************************************************!*\
   !*** ./resources/ts/components/pages/EveryoneNote.vue ***!
@@ -65897,15 +66494,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RegisterNote_vue_vue_type_template_id_1c0e2f01___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RegisterNote.vue?vue&type=template&id=1c0e2f01& */ "./resources/ts/components/pages/RegisterNote.vue?vue&type=template&id=1c0e2f01&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _RegisterNote_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RegisterNote.vue?vue&type=script&lang=ts& */ "./resources/ts/components/pages/RegisterNote.vue?vue&type=script&lang=ts&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RegisterNote_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
   _RegisterNote_vue_vue_type_template_id_1c0e2f01___WEBPACK_IMPORTED_MODULE_0__["render"],
   _RegisterNote_vue_vue_type_template_id_1c0e2f01___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -65919,6 +66518,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/ts/components/pages/RegisterNote.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/ts/components/pages/RegisterNote.vue?vue&type=script&lang=ts&":
+/*!*********************************************************************************!*\
+  !*** ./resources/ts/components/pages/RegisterNote.vue?vue&type=script&lang=ts& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_5_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterNote_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/ts-loader??ref--5!../../../../node_modules/vue-loader/lib??vue-loader-options!./RegisterNote.vue?vue&type=script&lang=ts& */ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/ts/components/pages/RegisterNote.vue?vue&type=script&lang=ts&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_5_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterNote_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

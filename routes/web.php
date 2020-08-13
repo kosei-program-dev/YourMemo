@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('get/myNote', 'Api\MyNoteController@getMyNotes');
+
 Route::post('/register', 'Auth\RegisterController@register');
 Route::post('/login', 'Auth\LoginController@login');
 Route::post('/logout', 'Auth\LoginController@logout');
-Route::post('/registerNote', 'RegisterNoteController@registerNote');
+// Route::post('/registerNote', 'RegisterNoteController@registerNote');
 
 Route::get('/{any}', function () {
     return view('welcome');
@@ -27,5 +29,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //test用
 // Route::get('get/everyoneNote', 'Api\EveryoneNoteController@getAllNotes');
+// Route::get('get/myNote', 'Api\MyNoteController@getMyNotes');
 
 

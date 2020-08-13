@@ -122,29 +122,13 @@
       <v-toolbar-title v-if="auth">{{auth.name}} さんでログインしています</v-toolbar-title>
     </v-app-bar>
 
-    <router-view></router-view>
-
-    <!-- <v-bottom-navigation v-model="bottomNav">
-      <v-btn value="recent">
-        <span>Recent</span>
-        <v-icon>mdi-history</v-icon>
-      </v-btn>
-
-      <v-btn value="favorites">
-        <span>Favorites</span>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn value="nearby">
-        <span>Nearby</span>
-        <v-icon>mdi-map-marker</v-icon>
-      </v-btn>
-    </v-bottom-navigation>-->
+    <router-view :auth="this.auth"></router-view>
 
     <v-footer app clipped-center color="blue darken-3 white--text">
       <span>&copy; Kosei's Project</span>
     </v-footer>
     <logout-confirm-modal ref="dialog"></logout-confirm-modal>
+    <v-snackbar v-model="snackbar" :timeout="timeout">{{ snackbarText }}</v-snackbar>
   </v-app>
 </template>
 
@@ -161,10 +145,20 @@ export default class App extends Vue {
   drawer: boolean = false;
   bottomNav: boolean = true;
 
+  snackbar: boolean = false;
+  snackbarText: string | null = sessionStorage.getItem("snackbarText");
+  timeout: number = 3000;
+
   $refs!: {
     dialog: LogoutConfirmModal;
   };
 
+  public created() {
+    if (this.snackbarText) {
+      this.snackbar = true;
+      sessionStorage.removeItem("snackbarText");
+    }
+  }
   public async dialogOpen() {
     this.$refs.dialog.open();
   }

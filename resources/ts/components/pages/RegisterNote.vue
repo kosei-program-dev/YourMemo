@@ -11,6 +11,7 @@
               <ValidationObserver ref="observer">
                 <v-form method="POST" action="/registerNote" id="registerNote">
                   <input type="hidden" name="_token" :value="csrf" />
+                  <input type="hidden" name="user_id" :value="auth.id" />
 
                   <v-col cols="12" md="12">
                     <ValidationProvider v-slot="{ errors }" name="title" rules="required|max:100">
@@ -54,7 +55,7 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { ValidationObserver } from "vee-validate";
 import RegisterNoteConfirmModal from "../modules/confirm/RegisterNoteConfirmModal.vue";
-import { RegisterNoteObject } from "../../vue-data-entity/RegisterNoteObject";
+import { ConfirmNoteObject } from "../../vue-data-entity/ConfirmNoteObject";
 
 @Component({
   components: {
@@ -62,15 +63,19 @@ import { RegisterNoteObject } from "../../vue-data-entity/RegisterNoteObject";
   }
 })
 export default class Register extends Vue {
-  title: string = "";
-  comment: string = "";
-  registerNoteObj: RegisterNoteObject = {
-    title: "",
-    comment: ""
-  };
+  @Prop()
+  auth!: any;
   csrf: string | null = document
     .querySelector('meta[name="csrf-token"]')!
     .getAttribute("content");
+
+  title: string = "";
+  comment: string = "";
+
+  registerNoteObj: ConfirmNoteObject = {
+    title: "",
+    comment: ""
+  };
 
   $refs!: {
     observer: InstanceType<typeof ValidationObserver>;
@@ -83,7 +88,6 @@ export default class Register extends Vue {
       this.registerNoteObj.title = this.title;
       this.registerNoteObj.comment = this.comment;
       this.$refs.dialog.open();
-      //   (<HTMLFormElement>document.querySelector("#register")).submit();
     }
   }
 }

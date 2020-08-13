@@ -13,11 +13,7 @@
             <v-icon left>mdi-email</v-icon>
             ひとことメモ:{{ registerNoteObj.comment }}
           </v-chip>
-          <!-- <v-chip class="ma-2" color="blue" label text-color="white" cols="12" md="12">
-            <v-icon left>mdi-lock</v-icon>パスワード: セキュリティ保護のため非表示
-          </v-chip>-->
         </v-card-text>
-
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-flex>
@@ -25,32 +21,39 @@
           </v-flex>
 
           <v-flex class="text-xs-right">
-            <v-btn color="red darken-1" text @click="submit()">登録する</v-btn>
+            <!-- <v-btn color="red darken-1" text @click="submit()">登録する</v-btn> -->
+            <v-btn color="red darken-1" text @click="registerNote()">登録する</v-btn>
           </v-flex>
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <!-- <v-form method="POST" action="/logout" id="logout"></v-form>
-    <v-form method="POST" action="/register" id="register">
-      <input type="hidden" name="_token" :value="csrf" />
-    </v-form>-->
+    <v-snackbar v-model="snackbar" :timeout="timeout">{{ text }}</v-snackbar>
   </v-row>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { RegisterNoteObject } from "../../../vue-data-entity/RegisterNoteObject";
+import { ConfirmNoteObject } from "../../../vue-data-entity/ConfirmNoteObject";
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
+import {
+  NoteObject,
+  NoteApiResponse
+} from "../../../vue-data-entity/NoteObject";
 
 @Component
 export default class RegisterNoteConfirmModal extends Vue {
   dialog: boolean = false;
+
+  snackbar: boolean = false;
+  text: string = "登録が完了しました";
+  timeout: number = 2000;
+
   csrf: string | null = document
     .querySelector('meta[name="csrf-token"]')!
     .getAttribute("content");
 
   @Prop()
-  registerNoteObj!: RegisterNoteObject;
-
+  registerNoteObj!: ConfirmNoteObject;
   /**
    * name
    */
@@ -60,13 +63,20 @@ export default class RegisterNoteConfirmModal extends Vue {
   /**
    * name
    */
-  public submit() {
-    (<HTMLFormElement>document.querySelector("#registerNote")).submit();
+  public registerNote() {
+    Vue.prototype.$http
+      .post("/api/get/registerNote", { registerData: this.registerNoteObj })
+      .then((res: AxiosResponse): void => {
+        sessionStorage.setItem("snackbarText", "Noteの登録が完了しました。");
+        location.reload();
+      })
+      .catch((error: AxiosError): void => {
+        alert(
+          "登録実行時にエラーが発生しました。時間をおいて再度の試みをお願いいたします。"
+        );
+      });
   }
 
-  /**
-   * name
-   */
   public close() {
     this.dialog = false;
   }

@@ -5,26 +5,36 @@
       <template v-slot:default>
         <thead>
           <tr>
-            <th class="text-left">番号</th>
-            <th class="text-left">タイトル</th>
-            <th class="text-left">ひとことメモ</th>
-            <th class="text-left">URL</th>
-            <th class="text-left">アップロード日時</th>
-            <th class="text-left">評価</th>
-            <!-- <th class="text-left">投稿者名</th> -->
+            <th class="text-center">タイトル</th>
+            <th class="text-center">ひとことメモ</th>
+            <th class="text-center">URL</th>
+            <th class="text-center">アップロード日時</th>
+            <th class="text-center">評価</th>
+            <th class="text-center">変更</th>
+            <th class="text-center">削除</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(item, index) in notes" :key="index">
-            <td>
-              <v-icon @click="download(item.id)">mdi-cloud-download-outline</v-icon>
-            </td>
             <td>{{ item.title }}</td>
             <td>{{ item.comment }}</td>
             <td style="white-space:pre-wrap; word-wrap:break-word;">{{ item.url }}</td>
             <td>{{ item.created_at }}</td>
             <td>{{ item.evaluation }}</td>
-            <!-- <td>{{ item.name }}</td> -->
+            <td>
+              <v-col cols="12" sm="3">
+                <v-btn icon color="gray">
+                  <v-icon>mdi-cached</v-icon>
+                </v-btn>
+              </v-col>
+            </td>
+            <td>
+              <v-col cols="12" sm="3">
+                <v-btn icon color="gray">
+                  <v-icon @click="delete(asd,fd)">mdi-delete</v-icon>
+                </v-btn>
+              </v-col>
+            </td>
           </tr>
         </tbody>
       </template>
@@ -44,6 +54,7 @@ export default class EveryoneNote extends Vue {
   pageLength: number = 15;
   page: boolean = true;
   public created() {
+    console.log("Everyonestart");
     this.getNotes();
   }
   public getNotes() {
@@ -53,7 +64,9 @@ export default class EveryoneNote extends Vue {
         this.notes = res.data.data;
       })
       .catch((error: AxiosError): void => {
-        alert("検索実行時にエラーが発生しました");
+        alert(
+          "検索実行時にエラーが発生しました。時間をおいて再度の試みをお願いいたします。"
+        );
       });
   }
 }

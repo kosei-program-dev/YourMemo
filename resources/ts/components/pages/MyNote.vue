@@ -67,7 +67,8 @@ export default class EveryoneNote extends Vue {
   page: boolean = true;
   deleteNoteObj: ConfirmNoteObject = {
     title: "",
-    comment: ""
+    comment: "",
+    url: ""
   };
 
   $refs!: {

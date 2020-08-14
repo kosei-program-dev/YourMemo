@@ -13,6 +13,10 @@
             <v-icon left>mdi-email</v-icon>
             ひとことメモ:{{ registerNoteObj.comment }}
           </v-chip>
+          <v-chip class="ma-2" color="blue" label text-color="white" cols="12" md="12">
+            <v-icon left>mdi-code-json</v-icon>
+            URL:{{ registerNoteObj.url }}
+          </v-chip>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -21,7 +25,6 @@
           </v-flex>
 
           <v-flex class="text-xs-right">
-            <!-- <v-btn color="red darken-1" text @click="submit()">登録する</v-btn> -->
             <v-btn color="red darken-1" text @click="registerNote()">登録する</v-btn>
           </v-flex>
         </v-card-actions>

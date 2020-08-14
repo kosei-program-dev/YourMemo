@@ -15,6 +15,7 @@ class RegisterNoteController extends Controller
             "user_id" => Auth::id(),
             "title"   => $request->registerData["title"],
             "comment" => $request->registerData["comment"],
+            "url"     => $request->registerData["url"],
         ];
         $this->create($data);
         return ;

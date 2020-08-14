@@ -52,7 +52,7 @@ export default class DeleteMyNoteConfirmModal extends Vue {
     .getAttribute("content");
 
   @Prop()
-  deleteNoteObj!: any;
+  deleteNoteObj!: ConfirmNoteObject;
   /**
    * name
    */

@@ -10,8 +10,6 @@
             <th class="text-center">URL</th>
             <th class="text-center">アップロード日時</th>
             <th class="text-center">評価</th>
-            <th class="text-center">変更</th>
-            <th class="text-center">削除</th>
           </tr>
         </thead>
         <tbody>
@@ -21,20 +19,6 @@
             <td style="white-space:pre-wrap; word-wrap:break-word;">{{ item.url }}</td>
             <td>{{ item.created_at }}</td>
             <td>{{ item.evaluation }}</td>
-            <td>
-              <v-col cols="12" sm="3">
-                <v-btn icon color="gray">
-                  <v-icon>mdi-cached</v-icon>
-                </v-btn>
-              </v-col>
-            </td>
-            <td>
-              <v-col cols="12" sm="3">
-                <v-btn icon color="gray">
-                  <v-icon @click="delete(asd,fd)">mdi-delete</v-icon>
-                </v-btn>
-              </v-col>
-            </td>
           </tr>
         </tbody>
       </template>

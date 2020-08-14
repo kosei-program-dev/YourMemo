@@ -10,14 +10,14 @@
               </v-card-title>
               <ValidationObserver ref="observer">
                 <v-form method="POST" action="/registerNote" id="registerNote">
-                  <input type="hidden" name="_token" :value="csrf" />
-                  <input type="hidden" name="user_id" :value="auth.id" />
+                  <!-- <input type="hidden" name="_token" :value="csrf" />
+                  <input type="hidden" name="user_id" :value="auth.id" />-->
 
                   <v-col cols="12" md="12">
                     <ValidationProvider v-slot="{ errors }" name="title" rules="required|max:100">
                       <v-text-field
                         prepend-icon="mdi-account-circle"
-                        v-model="title"
+                        v-model="registerNoteObj.title"
                         name="title"
                         :counter="100"
                         :error-messages="errors"
@@ -28,11 +28,22 @@
                     <ValidationProvider v-slot="{ errors }" name="comment" rules="required|max:100">
                       <v-text-field
                         prepend-icon="mdi-email"
-                        v-model="comment"
+                        v-model="registerNoteObj.comment"
                         name="comment"
                         :counter="100"
                         :error-messages="errors"
                         label="ひとことメモ"
+                        required
+                      ></v-text-field>
+                    </ValidationProvider>
+                    <ValidationProvider v-slot="{ errors }" name="url" rules="required|max:1000">
+                      <v-text-field
+                        prepend-icon="mdi-code-json"
+                        v-model="registerNoteObj.url"
+                        name="url"
+                        :counter="1000"
+                        :error-messages="errors"
+                        label="url"
                         required
                       ></v-text-field>
                     </ValidationProvider>
@@ -62,19 +73,17 @@ import { ConfirmNoteObject } from "../../vue-data-entity/ConfirmNoteObject";
     RegisterNoteConfirmModal
   }
 })
-export default class Register extends Vue {
+export default class RegisterNote extends Vue {
   @Prop()
   auth!: any;
   csrf: string | null = document
     .querySelector('meta[name="csrf-token"]')!
     .getAttribute("content");
 
-  title: string = "";
-  comment: string = "";
-
   registerNoteObj: ConfirmNoteObject = {
     title: "",
-    comment: ""
+    comment: "",
+    url: ""
   };
 
   $refs!: {
@@ -85,8 +94,6 @@ export default class Register extends Vue {
   public async registerNoteConfirm() {
     const isValid = await this.$refs.observer.validate();
     if (isValid) {
-      this.registerNoteObj.title = this.title;
-      this.registerNoteObj.comment = this.comment;
       this.$refs.dialog.open();
     }
   }

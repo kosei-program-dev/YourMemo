@@ -30,7 +30,6 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-snackbar v-model="snackbar" :timeout="timeout">{{ text }}</v-snackbar>
   </v-row>
 </template>
 
@@ -46,10 +45,6 @@ import {
 @Component
 export default class RegisterNoteConfirmModal extends Vue {
   dialog: boolean = false;
-
-  snackbar: boolean = false;
-  text: string = "登録が完了しました";
-  timeout: number = 2000;
 
   csrf: string | null = document
     .querySelector('meta[name="csrf-token"]')!

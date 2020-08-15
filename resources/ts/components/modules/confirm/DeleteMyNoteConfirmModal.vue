@@ -7,11 +7,15 @@
         <v-card-text class="d-flex flex-column">
           <v-chip class="ma-2" color="blue" label text-color="white" cols="12" md="12">
             <v-icon left>mdi-account-circle</v-icon>
-            タイトル:{{ deleteNoteObj.title }}
+            タイトル:{{ crudNoteObj.title }}
           </v-chip>
           <v-chip class="ma-2" color="blue" label text-color="white" cols="12" md="12">
             <v-icon left>mdi-email</v-icon>
-            ひとことメモ:{{ deleteNoteObj.comment }}
+            ひとことメモ:{{ crudNoteObj.comment }}
+          </v-chip>
+          <v-chip class="ma-2" color="blue" label text-color="white" cols="12" md="12">
+            <v-icon left>mdi-code-json</v-icon>
+            URL:{{ crudNoteObj.url }}
           </v-chip>
         </v-card-text>
         <v-card-actions>
@@ -19,14 +23,12 @@
           <v-flex>
             <v-btn class="text-left" color="green darken-1" text @click="close()">キャンセル</v-btn>
           </v-flex>
-
           <v-flex class="text-xs-right">
-            <v-btn color="red darken-1" text @click="deleteNote(deleteNoteObj)">削除する</v-btn>
+            <v-btn color="red darken-1" text @click="deleteNote(crudNoteObj)">削除する</v-btn>
           </v-flex>
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-snackbar v-model="snackbar" :timeout="timeout">{{ text }}</v-snackbar>
   </v-row>
 </template>
 
@@ -42,17 +44,12 @@ import {
 @Component
 export default class DeleteMyNoteConfirmModal extends Vue {
   dialog: boolean = false;
-
-  snackbar: boolean = false;
-  text: string = "登録が完了しました";
-  timeout: number = 2000;
-
   csrf: string | null = document
     .querySelector('meta[name="csrf-token"]')!
     .getAttribute("content");
 
   @Prop()
-  deleteNoteObj!: ConfirmNoteObject;
+  crudNoteObj!: ConfirmNoteObject;
   /**
    * name
    */

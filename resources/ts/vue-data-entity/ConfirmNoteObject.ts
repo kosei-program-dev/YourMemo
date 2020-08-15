@@ -4,4 +4,5 @@ export interface ConfirmNoteObject {
     title: string;
     comment: string;
     url: string;
+    // user_id?: number | null;
 }

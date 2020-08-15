@@ -26,7 +26,7 @@
             <td>
               <v-col cols="12" sm="3">
                 <v-btn icon color="gray">
-                  <v-icon>mdi-cached</v-icon>
+                  <v-icon @click="updateNoteConfirm(item)">mdi-cached</v-icon>
                 </v-btn>
               </v-col>
             </td>
@@ -41,7 +41,12 @@
         </tbody>
       </template>
     </v-simple-table>
-    <delete-my-note-confirm-modal ref="dialog" :deleteNoteObj="deleteNoteObj"></delete-my-note-confirm-modal>
+    <update-my-note-confirm-modal
+      ref="updateDialog"
+      :noteData="noteData"
+      :crudNoteObj="crudNoteObj"
+    ></update-my-note-confirm-modal>
+    <delete-my-note-confirm-modal ref="deleteDialog" :crudNoteObj="crudNoteObj"></delete-my-note-confirm-modal>
   </v-content>
 </template>
 
@@ -51,28 +56,32 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { NoteObject, NoteApiResponse } from "../../vue-data-entity/NoteObject";
 import { ConfirmNoteObject } from "../../vue-data-entity/ConfirmNoteObject";
 import DeleteMyNoteConfirmModal from "../modules/confirm/DeleteMyNoteConfirmModal.vue";
+import UpdateMyNoteConfirmModal from "../modules/confirm/UpdateMyNoteConfirmModal.vue";
 
 @Component({
   components: {
-    DeleteMyNoteConfirmModal
+    DeleteMyNoteConfirmModal,
+    UpdateMyNoteConfirmModal
   }
 })
-export default class EveryoneNote extends Vue {
+export default class MyNote extends Vue {
   public created() {
     this.getMyNotes();
   }
-
+  noteData: any = {};
   notes: Array<NoteObject> = [];
   pageLength: number = 15;
   page: boolean = true;
-  deleteNoteObj: ConfirmNoteObject = {
+
+  crudNoteObj: ConfirmNoteObject = {
     title: "",
     comment: "",
     url: ""
   };
 
   $refs!: {
-    dialog: DeleteMyNoteConfirmModal;
+    updateDialog: UpdateMyNoteConfirmModal;
+    deleteDialog: DeleteMyNoteConfirmModal;
   };
 
   public getMyNotes() {
@@ -87,11 +96,18 @@ export default class EveryoneNote extends Vue {
         );
       });
   }
+
+  public async updateNoteConfirm(item: any) {
+    this.noteData = item;
+    this.crudNoteObj.title = item.title;
+    this.crudNoteObj.comment = item.comment;
+    this.crudNoteObj.url = item.url;
+    this.$refs.updateDialog.open();
+  }
+
   public async deleteNoteConfirm(item: any) {
-    // this.deleteNoteObj.title = item.title;
-    // this.deleteNoteObj.comment = item.title;
-    this.deleteNoteObj = item;
-    this.$refs.dialog.open();
+    this.crudNoteObj = item;
+    this.$refs.deleteDialog.open();
   }
 }
 </script>

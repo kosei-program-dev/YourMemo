@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <h1>Home Page</h1>
+    <h1>ホーム画面</h1>
     <v-snackbar v-model="snackbar" :timeout="timeout">{{ text }}</v-snackbar>
   </v-content>
 </template>

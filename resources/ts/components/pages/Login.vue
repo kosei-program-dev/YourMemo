@@ -6,7 +6,7 @@
           <v-container style class="text-xs-center">
             <v-card flat>
               <v-card-title primary-title>
-                <h4>Login</h4>
+                <h4>ログイン</h4>
               </v-card-title>
               <ValidationObserver ref="observer">
                 <v-form method="POST" action="/login" id="login">

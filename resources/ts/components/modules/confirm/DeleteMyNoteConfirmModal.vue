@@ -38,7 +38,7 @@ import { ConfirmNoteObject } from "../../../vue-data-entity/ConfirmNoteObject";
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import {
   NoteObject,
-  NoteApiResponse
+  NoteApiResponse,
 } from "../../../vue-data-entity/NoteObject";
 
 @Component

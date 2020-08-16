@@ -1,5 +1,5 @@
 <template>
   <v-content>
-    <h1>Search Page</h1>
+    <h1>メモ検索</h1>
   </v-content>
 </template>

@@ -6,7 +6,7 @@
           <v-container style class="text-xs-center">
             <v-card flat>
               <v-card-title primary-title>
-                <h4>Register</h4>
+                <h4>ユーザ登録</h4>
               </v-card-title>
               <ValidationObserver ref="observer">
                 <v-form method="POST" action="/register" id="register">
@@ -95,8 +95,8 @@ import { RegisterObject } from "../../vue-data-entity/RegisterObject";
 
 @Component({
   components: {
-    RegisterConfirmModal
-  }
+    RegisterConfirmModal,
+  },
 })
 export default class Register extends Vue {
   name: string = "";
@@ -106,7 +106,7 @@ export default class Register extends Vue {
   registerObj: RegisterObject = {
     name: "",
     email: "",
-    password: ""
+    password: "",
   };
   csrf: string | null = document
     .querySelector('meta[name="csrf-token"]')!

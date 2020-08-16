@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <h1>MyNote Page</h1>
+    <h1>わたしのメモ</h1>
     <v-simple-table dense>
       <template v-slot:default>
         <thead>
@@ -61,8 +61,8 @@ import UpdateMyNoteConfirmModal from "../modules/confirm/UpdateMyNoteConfirmModa
 @Component({
   components: {
     DeleteMyNoteConfirmModal,
-    UpdateMyNoteConfirmModal
-  }
+    UpdateMyNoteConfirmModal,
+  },
 })
 export default class MyNote extends Vue {
   public created() {
@@ -76,7 +76,7 @@ export default class MyNote extends Vue {
   crudNoteObj: ConfirmNoteObject = {
     title: "",
     comment: "",
-    url: ""
+    url: "",
   };
 
   $refs!: {

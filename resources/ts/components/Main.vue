@@ -8,7 +8,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/myPage">MyPage</router-link>
+              <router-link class="black--text" to="/myPage">わたしのページ</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -19,7 +19,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/everyoneNote">EveryoneNote</router-link>
+              <router-link class="black--text" to="/everyoneNote">みんなのメモ</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -30,7 +30,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/myNote">MyNote</router-link>
+              <router-link class="black--text" to="/myNote">わたしのメモ</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -41,7 +41,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/">Home</router-link>
+              <router-link class="black--text" to="/">ホーム画面</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -52,7 +52,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/login">Login</router-link>
+              <router-link class="black--text" to="/login">ログイン</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -63,7 +63,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/notification">Notification</router-link>
+              <router-link class="black--text" to="/notification">わたしへの通知</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -74,7 +74,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/register">Register</router-link>
+              <router-link class="black--text" to="/register">ユーザ登録</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -85,7 +85,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/registerNote">RegisterNote</router-link>
+              <router-link class="black--text" to="/registerNote">ノート登録</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -96,7 +96,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/search">Search</router-link>
+              <router-link class="black--text" to="/search">メモ検索</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -108,7 +108,7 @@
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title>
-            <a class="black--text" @click="dialogOpen()">Logout</a>
+            <a class="black--text" @click="dialogOpen()">ログアウト</a>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -138,8 +138,8 @@ import LogoutConfirmModal from "./modules/confirm/LogoutConfirmModal.vue";
 
 @Component({
   components: {
-    LogoutConfirmModal
-  }
+    LogoutConfirmModal,
+  },
 })
 export default class App extends Vue {
   drawer: boolean = false;

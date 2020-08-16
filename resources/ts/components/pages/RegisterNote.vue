@@ -6,7 +6,7 @@
           <v-container style class="text-xs-center">
             <v-card flat>
               <v-card-title primary-title>
-                <h4>RegisterNote</h4>
+                <h4>メモの登録</h4>
               </v-card-title>
               <ValidationObserver ref="observer">
                 <v-form method="POST" action="/registerNote" id="registerNote">
@@ -70,8 +70,8 @@ import { ConfirmNoteObject } from "../../vue-data-entity/ConfirmNoteObject";
 
 @Component({
   components: {
-    RegisterNoteConfirmModal
-  }
+    RegisterNoteConfirmModal,
+  },
 })
 export default class RegisterNote extends Vue {
   @Prop()
@@ -83,7 +83,7 @@ export default class RegisterNote extends Vue {
   registerNoteObj: ConfirmNoteObject = {
     title: "",
     comment: "",
-    url: ""
+    url: "",
   };
 
   $refs!: {

@@ -1,6 +1,28 @@
 <template>
   <v-content>
-    <h1>EveryoneNote Page</h1>
+    <h1>みんなのメモ</h1>
+    <v-container>
+      <ValidationObserver ref="observer">
+        <v-row>
+          <v-col cols="10">
+            <ValidationProvider v-slot="{ errors }" name="検索単語" rules="required|max:100">
+              <v-text-field
+                prepend-icon="mdi-folder-search-outline"
+                v-model="searchWord"
+                name="searchWord"
+                :counter="100"
+                :error-messages="errors"
+                label="任意の単語で検索出来ます"
+                required
+              ></v-text-field>
+            </ValidationProvider>
+          </v-col>
+          <v-col cols="2">
+            <!-- <v-btn class="text-right" color="primary" @click="searchNote(searchWord)">検索</v-btn> -->
+          </v-col>
+        </v-row>
+      </ValidationObserver>
+    </v-container>
     <v-simple-table dense>
       <template v-slot:default>
         <thead>
@@ -23,12 +45,12 @@
         </tbody>
       </template>
     </v-simple-table>
-    <!-- <v-pagination v-model="page" :length="pageLength"></v-pagination> -->
   </v-content>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component, Watch } from "vue-property-decorator";
+import { ValidationObserver } from "vee-validate";
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { NoteObject, NoteApiResponse } from "../../vue-data-entity/NoteObject";
 
@@ -37,10 +59,16 @@ export default class EveryoneNote extends Vue {
   notes: Array<NoteObject> = [];
   pageLength: number = 15;
   page: boolean = true;
+  searchWord: string | null = null;
+
   public created() {
-    console.log("Everyonestart");
     this.getNotes();
   }
+
+  $refs!: {
+    observer: InstanceType<typeof ValidationObserver>;
+  };
+
   public getNotes() {
     Vue.prototype.$http
       .get("/api/get/everyoneNote")
@@ -52,6 +80,26 @@ export default class EveryoneNote extends Vue {
           "検索実行時にエラーが発生しました。時間をおいて再度の試みをお願いいたします。"
         );
       });
+  }
+
+  @Watch("searchWord", { deep: true })
+  public async search() {
+    console.log("start search");
+    const isValid = await this.$refs.observer.validate();
+    if (isValid) {
+      Vue.prototype.$http
+        .get("/api/get/searchNote", { params: { searchWord: this.searchWord } })
+        .then((res: AxiosResponse<NoteApiResponse>): void => {
+          this.notes = res.data.data;
+        })
+        .catch((error: AxiosError): void => {
+          alert(
+            "検索実行時にエラーが発生しました。時間をおいて再度の試みをお願いいたします。"
+          );
+        });
+    } else {
+      this.getNotes();
+    }
   }
 }
 </script>

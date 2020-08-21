@@ -21,6 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['api']], function () {
     Route::get('/get/everyoneNote', 'Api\EveryoneNoteController@getAllNotes');
     Route::get('get/myNote', 'Api\MyNoteController@getMyNotes');
+    Route::get('get/searchNote', 'Api\SearchNoteController@searchNote');
     Route::post('get/registerNote', 'Api\RegisterNoteController@registerNote');
     Route::post('delete/deleteNote', 'Api\DeleteMyNoteController@deleteNote');
+    Route::post('update/updateNote', 'Api\UpdateMyNoteController@updateNote');
 });

@@ -44,9 +44,15 @@
     <update-my-note-confirm-modal
       ref="updateDialog"
       :noteData="noteData"
+      @snackbar="openSnackbar"
       :crudNoteObj="crudNoteObj"
     ></update-my-note-confirm-modal>
-    <delete-my-note-confirm-modal ref="deleteDialog" :crudNoteObj="crudNoteObj"></delete-my-note-confirm-modal>
+    <delete-my-note-confirm-modal
+      ref="deleteDialog"
+      @snackbar="openSnackbar"
+      :crudNoteObj="crudNoteObj"
+    ></delete-my-note-confirm-modal>
+    <v-snackbar v-model="snackbar" :timeout="timeout">{{ snackbarText }}</v-snackbar>
   </v-content>
 </template>
 
@@ -73,6 +79,10 @@ export default class MyNote extends Vue {
   pageLength: number = 15;
   page: boolean = true;
 
+  snackbar: boolean = false;
+  snackbarText: string = "";
+  timeout: number = 3000;
+
   crudNoteObj: ConfirmNoteObject = {
     title: "",
     comment: "",
@@ -95,6 +105,11 @@ export default class MyNote extends Vue {
           "検索実行時にエラーが発生しました。時間をおいて再度の試みをお願いいたします。"
         );
       });
+  }
+  public openSnackbar(snackbarText: string) {
+    this.snackbarText = snackbarText;
+    this.snackbar = true;
+    this.getMyNotes();
   }
 
   public async updateNoteConfirm(item: any) {

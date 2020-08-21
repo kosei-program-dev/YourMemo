@@ -157,9 +157,6 @@ export default class App extends Vue {
       this.snackbar = true;
       sessionStorage.removeItem("snackbarText");
     }
-    if (!this.auth) {
-      location.href = "/";
-    }
   }
   public async dialogOpen() {
     this.$refs.dialog.open();

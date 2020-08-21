@@ -1,0 +1,11 @@
+diff a/resources/ts/components/Main.vue b/resources/ts/components/Main.vue	(rejected hunks)
+@@ -157,6 +157,9 @@
+       this.snackbar = true;
+       sessionStorage.removeItem("snackbarText");
+     }
++    if (!this.auth) {
++      location.href = "/";
++    }
+   }
+   public async dialogOpen() {
+     this.$refs.dialog.open();

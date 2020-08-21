@@ -63,8 +63,8 @@ export default class DeleteMyNoteConfirmModal extends Vue {
     Vue.prototype.$http
       .post("/api/delete/deleteNote", { noteData: $noteData })
       .then((res: AxiosResponse<NoteApiResponse>): void => {
-        sessionStorage.setItem("snackbarText", "Noteの削除が完了しました。");
-        location.reload();
+        this.$emit("snackbar", "Noteの削除が完了しました");
+        this.close();
       })
       .catch((error: AxiosError): void => {
         alert(

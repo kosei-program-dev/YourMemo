@@ -128,7 +128,6 @@
       <span>&copy; Kosei's Project</span>
     </v-footer>
     <logout-confirm-modal ref="dialog"></logout-confirm-modal>
-    <v-snackbar v-model="snackbar" :timeout="timeout">{{ snackbarText }}</v-snackbar>
   </v-app>
 </template>
 
@@ -157,6 +156,9 @@ export default class App extends Vue {
     if (this.snackbarText) {
       this.snackbar = true;
       sessionStorage.removeItem("snackbarText");
+    }
+    if (!this.auth) {
+      location.href = "/";
     }
   }
   public async dialogOpen() {

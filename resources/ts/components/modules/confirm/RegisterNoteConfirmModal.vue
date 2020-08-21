@@ -39,7 +39,7 @@ import { ConfirmNoteObject } from "../../../vue-data-entity/ConfirmNoteObject";
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import {
   NoteObject,
-  NoteApiResponse
+  NoteApiResponse,
 } from "../../../vue-data-entity/NoteObject";
 
 @Component
@@ -65,8 +65,11 @@ export default class RegisterNoteConfirmModal extends Vue {
     Vue.prototype.$http
       .post("/api/get/registerNote", { registerData: this.registerNoteObj })
       .then((res: AxiosResponse): void => {
-        sessionStorage.setItem("snackbarText", "Noteの登録が完了しました。");
-        location.reload();
+        this.$emit("snackbar", "Noteの登録が完了しました");
+        this.registerNoteObj.title = "";
+        this.registerNoteObj.comment = "";
+        this.registerNoteObj.url = "";
+        this.close();
       })
       .catch((error: AxiosError): void => {
         alert(

@@ -1,6 +1,23 @@
 <template>
   <v-content>
     <h1>わたしのメモ</h1>
+    <ValidationObserver ref="observer">
+      <v-row>
+        <v-col cols="10">
+          <ValidationProvider v-slot="{ errors }" name="検索単語" rules="required|max:100">
+            <v-text-field
+              prepend-icon="mdi-folder-search-outline"
+              v-model="searchWord"
+              name="searchWord"
+              :counter="100"
+              :error-messages="errors"
+              label="任意の単語で検索出来ます"
+              required
+            ></v-text-field>
+          </ValidationProvider>
+        </v-col>
+      </v-row>
+    </ValidationObserver>
     <v-simple-table dense>
       <template v-slot:default>
         <thead>
@@ -57,7 +74,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component, Watch } from "vue-property-decorator";
+import { ValidationObserver } from "vee-validate";
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { NoteObject, NoteApiResponse } from "../../vue-data-entity/NoteObject";
 import { ConfirmNoteObject } from "../../vue-data-entity/ConfirmNoteObject";
@@ -74,10 +92,9 @@ export default class MyNote extends Vue {
   public created() {
     this.getMyNotes();
   }
+  searchWord: string | null = null;
   noteData: any = {};
   notes: Array<NoteObject> = [];
-  pageLength: number = 15;
-  page: boolean = true;
 
   snackbar: boolean = false;
   snackbarText: string = "";
@@ -90,9 +107,31 @@ export default class MyNote extends Vue {
   };
 
   $refs!: {
+    observer: InstanceType<typeof ValidationObserver>;
     updateDialog: UpdateMyNoteConfirmModal;
     deleteDialog: DeleteMyNoteConfirmModal;
   };
+
+  @Watch("searchWord", { deep: true })
+  public async search() {
+    const isValid = await this.$refs.observer.validate();
+    if (isValid) {
+      Vue.prototype.$http
+        .get("/api/get/searchMyNote", {
+          params: { searchWord: this.searchWord },
+        })
+        .then((res: AxiosResponse<NoteApiResponse>): void => {
+          this.notes = res.data.data;
+        })
+        .catch((error: AxiosError): void => {
+          alert(
+            "検索実行時にエラーが発生しました。時間をおいて再度の試みをお願いいたします。"
+          );
+        });
+    } else {
+      this.getMyNotes();
+    }
+  }
 
   public getMyNotes() {
     Vue.prototype.$http

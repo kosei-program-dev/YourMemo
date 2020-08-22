@@ -21,6 +21,20 @@ class SearchNoteController extends Controller
         return ['data' => $data];
     }
 
+    public function searchMyNote(Request $request){
+        $this->certification();
+        $user_id = Auth::id();
+        $searchWord = $request->searchWord;
+        $data = Note::where(function($query) use ($searchWord,$user_id){
+            $query->where('user_id',$user_id)
+            ->where('title', 'LIKE', "%".$searchWord."%")
+            ->orWhere('comment', 'LIKE', "%".$searchWord,"%")
+            ->select('id','title','comment','url','evaluation','created_at');
+        })
+        ->get();
+        return ['data' => $data];
+    }
+
     public function certification(){
         if(!Auth::user()){
             return redirect('/');

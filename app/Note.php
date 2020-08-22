@@ -12,5 +12,8 @@ class Note extends Model
     protected $guarded = [
         'id'
     ];
+    protected $dates   = [
+        'created_at'
+    ];
 
 }

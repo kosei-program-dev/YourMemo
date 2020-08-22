@@ -63,7 +63,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link class="black--text" to="/notification">わたしへの通知</router-link>
+              <router-link class="black--text" to="/notification">通知</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -121,8 +121,9 @@
 
       <v-toolbar-title v-if="auth">{{auth.name}} さんでログインしています</v-toolbar-title>
     </v-app-bar>
-
-    <router-view :auth="this.auth"></router-view>
+    <v-container fluid>
+      <router-view :auth="this.auth"></router-view>
+    </v-container>
 
     <v-footer app clipped-center color="blue darken-3 white--text">
       <span>&copy; Kosei's Project</span>

@@ -44,7 +44,13 @@
                         <td style="white-space:pre-wrap; word-wrap:break-word;">
                             {{ item.url }}
                         </td>
-                        <td>{{ item.created_at }}</td>
+                        <td>
+                            {{
+                                new Date(item.created_at).toLocaleString(
+                                    "ja-JP-u-ca-japanese"
+                                )
+                            }}
+                        </td>
                         <td>
                             <v-icon small color="blue">mdi-star</v-icon>({{
                                 item.evaluation

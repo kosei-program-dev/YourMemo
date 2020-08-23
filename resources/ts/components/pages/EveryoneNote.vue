@@ -61,6 +61,7 @@
             </template>
         </v-simple-table>
     </v-content>
+            <td>{{ new Date(item.created_at).toLocaleString('ja-JP-u-ca-japanese') }}</td>
 </template>
 
 <script lang="ts">

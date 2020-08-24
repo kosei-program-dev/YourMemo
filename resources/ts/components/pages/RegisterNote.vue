@@ -58,7 +58,11 @@
       @snackbar="openSnackbar"
       :registerNoteObj="registerNoteObj"
     ></register-note-confirm-modal>
-    <v-snackbar v-model="snackbar" :timeout="timeout">{{ snackbarText }}</v-snackbar>
+    <v-snackbar v-model="snackbar" :timeout="3000">
+      {{
+      snackbarText
+      }}
+    </v-snackbar>
   </v-content>
 </template>
 
@@ -79,7 +83,6 @@ export default class RegisterNote extends Vue {
 
   snackbar: boolean = false;
   snackbarText: string = "";
-  timeout: number = 3000;
 
   registerNoteObj: ConfirmNoteObject = {
     title: "",

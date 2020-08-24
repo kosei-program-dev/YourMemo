@@ -145,20 +145,10 @@ export default class App extends Vue {
   drawer: boolean = false;
   bottomNav: boolean = true;
 
-  snackbar: boolean = false;
-  snackbarText: string | null = sessionStorage.getItem("snackbarText");
-  timeout: number = 3000;
-
   $refs!: {
     dialog: LogoutConfirmModal;
   };
 
-  public created() {
-    if (this.snackbarText) {
-      this.snackbar = true;
-      sessionStorage.removeItem("snackbarText");
-    }
-  }
   public async dialogOpen() {
     this.$refs.dialog.open();
   }

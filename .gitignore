@@ -1,6 +1,9 @@
 /node_modules
 /public/hot
 /public/storage
+/public/css
+/public/js
+/public/phpMyAdmin-5.0.2-all-languages
 /storage/*.key
 /vendor
 .env

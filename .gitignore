@@ -3,6 +3,7 @@
 /public/storage
 /public/css
 /public/js
+/public/mix-manifest.json
 /public/phpMyAdmin-5.0.2-all-languages
 /storage/*.key
 /vendor

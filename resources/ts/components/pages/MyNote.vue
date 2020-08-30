@@ -19,54 +19,56 @@
       </v-row>
     </ValidationObserver>
     <v-simple-table dense>
-      <template v-slot:default>
-        <thead>
-          <tr>
-            <th class="text-center">番号</th>
-            <th class="text-center">タイトル</th>
-            <th class="text-center">ひとことメモ</th>
-            <th class="text-center">URL</th>
-            <th class="text-center">アップロード日時</th>
-            <th class="text-center">評価</th>
-            <th class="text-center">変更</th>
-            <th class="text-center">削除</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(item, index) in notes" :key="index">
-            <td>{{ index + 1 }}</td>
-            <td>{{ item.title }}</td>
-            <td>{{ item.comment }}</td>
-            <td style="white-space:pre-wrap; word-wrap:break-word;">{{ item.url }}</td>
-            <td>
-              {{
-              new Date(item.created_at).toLocaleString(
-              "ja-JP-u-ca-japanese"
-              )
-              }}
-            </td>
-            <td>
-              <v-icon small color="blue">mdi-star</v-icon>
-              ({{ item.evaluation }})
-            </td>
-            <td>
-              <v-col cols="12" sm="3">
-                <v-btn icon color="gray">
-                  <v-icon @click="updateNoteConfirm(item)">mdi-cached</v-icon>
-                </v-btn>
-              </v-col>
-            </td>
-            <td>
-              <v-col cols="12" sm="3">
-                <v-btn icon color="gray">
-                  <v-icon @click="deleteNoteConfirm(item)">mdi-delete</v-icon>
-                </v-btn>
-              </v-col>
-            </td>
-          </tr>
-        </tbody>
-      </template>
+      <thead>
+        <tr>
+          <th class="text-center">番号</th>
+          <th class="text-center">タイトル</th>
+          <th class="text-center">ひとことメモ</th>
+          <th class="text-center">URL</th>
+          <th class="text-center">アップロード日時</th>
+          <th class="text-center">評価</th>
+          <th class="text-center">変更</th>
+          <th class="text-center">削除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in notes" :key="index">
+          <td @click="openPreview(item.url)">{{ index + 1 }}</td>
+          <td @click="openPreview(item.url)">{{ item.title }}</td>
+          <td @click="openPreview(item.url)">{{ item.comment }}</td>
+          <td
+            style="white-space:pre-wrap; word-wrap:break-word;"
+            @click="openPreview(item.url)"
+          >{{ item.url }}</td>
+          <td @click="openPreview(item.url)">
+            {{
+            new Date(item.created_at).toLocaleString(
+            "ja-JP-u-ca-japanese"
+            )
+            }}
+          </td>
+          <td @click="openPreview(item.url)">
+            <v-icon small color="blue">mdi-star</v-icon>
+            ({{ item.evaluation }})
+          </td>
+          <td>
+            <v-col cols="12" sm="3">
+              <v-btn icon color="gray">
+                <v-icon @click="updateNoteConfirm(item)">mdi-cached</v-icon>
+              </v-btn>
+            </v-col>
+          </td>
+          <td>
+            <v-col cols="12" sm="3">
+              <v-btn icon color="gray">
+                <v-icon @click="deleteNoteConfirm(item)">mdi-delete</v-icon>
+              </v-btn>
+            </v-col>
+          </td>
+        </tr>
+      </tbody>
     </v-simple-table>
+    <preview-modal ref="previewDialog" :crudNoteObj="crudNoteObj"></preview-modal>
     <update-my-note-confirm-modal
       ref="updateDialog"
       :noteData="noteData"
@@ -88,11 +90,13 @@ import { ValidationObserver } from "vee-validate";
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { NoteObject, NoteApiResponse } from "../../vue-data-entity/NoteObject";
 import { ConfirmNoteObject } from "../../vue-data-entity/ConfirmNoteObject";
+import PreviewModal from "../modules/preview/PreviewModal.vue";
 import DeleteMyNoteConfirmModal from "../modules/confirm/DeleteMyNoteConfirmModal.vue";
 import UpdateMyNoteConfirmModal from "../modules/confirm/UpdateMyNoteConfirmModal.vue";
 
 @Component({
   components: {
+    PreviewModal,
     DeleteMyNoteConfirmModal,
     UpdateMyNoteConfirmModal,
   },
@@ -118,6 +122,7 @@ export default class MyNote extends Vue {
     observer: InstanceType<typeof ValidationObserver>;
     updateDialog: UpdateMyNoteConfirmModal;
     deleteDialog: DeleteMyNoteConfirmModal;
+    previewDialog: PreviewModal;
   };
 
   @Watch("searchWord", { deep: true })
@@ -138,6 +143,15 @@ export default class MyNote extends Vue {
         });
     } else {
       this.getMyNotes();
+    }
+  }
+
+  public openPreview($url: string) {
+    if ($url) {
+      this.$refs.previewDialog.open($url);
+    } else {
+      this.snackbarText = "urlが指定されていないようです。";
+      this.snackbar = true;
     }
   }
 

@@ -9,7 +9,8 @@ use App\Note;
 class EveryoneNoteController extends Controller
 {
     public function getAllNotes(){
-        $data = Note::select('id','title','comment','url','evaluation','created_at')->get();
+        // $data = Note::select('id','title','comment','url','evaluation','created_at')->get();
+        $data = Note::with('favoriteNotes')->get();
         return ['data' => $data];
     }
 }

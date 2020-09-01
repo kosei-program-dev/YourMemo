@@ -83,7 +83,7 @@
       @snackbar="openSnackbar"
       :crudNoteObj="crudNoteObj"
     ></delete-my-note-confirm-modal>
-    <v-snackbar v-model="snackbar" :timeout="3000">{{ snackbarText }}</v-snackbar>
+    <v-snackbar v-model="snackbar" :timeout="1000">{{ snackbarText }}</v-snackbar>
   </v-content>
 </template>
 

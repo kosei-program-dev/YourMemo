@@ -16,7 +16,9 @@ class CreateFavoriteNotesTable extends Migration
         Schema::create('favorite_notes', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('note_id');
+            // $table->foreign('note_id')->references('id')->on('notes')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

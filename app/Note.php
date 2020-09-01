@@ -15,5 +15,8 @@ class Note extends Model
     protected $dates   = [
         'created_at'
     ];
-
+    public function favoriteNotes()
+    {
+        return $this->hasMany('App\FavoriteNote');
+    }
 }

@@ -21,6 +21,7 @@
     <v-simple-table dense>
       <thead>
         <tr>
+          <th class="text-center">お気に入り</th>
           <th class="text-center">番号</th>
           <th class="text-center">タイトル</th>
           <th class="text-center">ひとことメモ</th>
@@ -33,37 +34,39 @@
       </thead>
       <tbody>
         <tr v-for="(item, index) in notes" :key="index">
-          <td @click="openPreview(item.url)">{{ index + 1 }}</td>
-          <td @click="openPreview(item.url)">{{ item.title }}</td>
-          <td @click="openPreview(item.url)">{{ item.comment }}</td>
+          <td class="text-center">
+            <v-btn icon :color="jadgeFavorite(item.favorite_notes[0])">
+              <v-icon @click="switchFavorite(item)">mdi-heart</v-icon>
+            </v-btn>
+          </td>
+          <td class="text-center" @click="openPreview(item.url)">{{ index + 1 }}</td>
+          <td class="text-center" @click="openPreview(item.url)">{{ item.title }}</td>
+          <td class="text-center" @click="openPreview(item.url)">{{ item.comment }}</td>
           <td
+            class="text-center"
             style="white-space:pre-wrap; word-wrap:break-word;"
             @click="openPreview(item.url)"
           >{{ item.url }}</td>
-          <td @click="openPreview(item.url)">
+          <td class="text-center" @click="openPreview(item.url)">
             {{
             new Date(item.created_at).toLocaleString(
             "ja-JP-u-ca-japanese"
             )
             }}
           </td>
-          <td @click="openPreview(item.url)">
+          <td class="text-center" @click="openPreview(item.url)">
             <v-icon small color="blue">mdi-star</v-icon>
             ({{ item.evaluation }})
           </td>
-          <td>
-            <v-col cols="12" sm="3">
-              <v-btn icon color="gray">
-                <v-icon @click="updateNoteConfirm(item)">mdi-cached</v-icon>
-              </v-btn>
-            </v-col>
+          <td class="text-center">
+            <v-btn icon color="gray">
+              <v-icon @click="updateNoteConfirm(item)">mdi-cached</v-icon>
+            </v-btn>
           </td>
-          <td>
-            <v-col cols="12" sm="3">
-              <v-btn icon color="gray">
-                <v-icon @click="deleteNoteConfirm(item)">mdi-delete</v-icon>
-              </v-btn>
-            </v-col>
+          <td class="text-center">
+            <v-btn icon color="gray">
+              <v-icon @click="deleteNoteConfirm(item)">mdi-delete</v-icon>
+            </v-btn>
           </td>
         </tr>
       </tbody>
@@ -80,7 +83,7 @@
       @snackbar="openSnackbar"
       :crudNoteObj="crudNoteObj"
     ></delete-my-note-confirm-modal>
-    <v-snackbar v-model="snackbar" :timeout="3000">{{ snackbarText }}</v-snackbar>
+    <v-snackbar v-model="snackbar" :timeout="1000">{{ snackbarText }}</v-snackbar>
   </v-content>
 </template>
 
@@ -105,12 +108,15 @@ export default class MyNote extends Vue {
   public created() {
     this.getMyNotes();
   }
+
   searchWord: string | null = null;
   noteData: any = {};
   notes: Array<NoteObject> = [];
 
   snackbar: boolean = false;
   snackbarText: string = "";
+
+  favoriteIconColor: string = "gray";
 
   crudNoteObj: ConfirmNoteObject = {
     title: "",
@@ -146,6 +152,42 @@ export default class MyNote extends Vue {
     }
   }
 
+  public getMyNotes() {
+    Vue.prototype.$http
+      .get("/api/get/myNote")
+      .then((res: AxiosResponse<NoteApiResponse>): void => {
+        this.notes = res.data.data;
+      })
+      .catch((error: AxiosError): void => {
+        alert(
+          "Note取得時にエラーが発生しました。時間をおいて再度の試みをお願いいたします。"
+        );
+      });
+  }
+
+  public switchFavorite(data: any) {
+    Vue.prototype.$http
+      .post("/api/post/switchFavorite", { data: data })
+      .then((res: AxiosResponse<NoteApiResponse>): void => {
+        this.snackbarText = "お気に入り変更しました。";
+        this.getMyNotes();
+        this.snackbar = true;
+      })
+      .catch((error: AxiosError): void => {
+        alert(
+          "お気に入り機能実行時にエラーが発生しました。時間をおいて再度の試みをお願いいたします。"
+        );
+      });
+  }
+
+  public jadgeFavorite(relation: any) {
+    if (relation) {
+      return "red";
+    } else {
+      return "gray";
+    }
+  }
+
   public openPreview($url: string) {
     if ($url) {
       this.$refs.previewDialog.open($url);
@@ -155,18 +197,6 @@ export default class MyNote extends Vue {
     }
   }
 
-  public getMyNotes() {
-    Vue.prototype.$http
-      .get("/api/get/myNote")
-      .then((res: AxiosResponse<NoteApiResponse>): void => {
-        this.notes = res.data.data;
-      })
-      .catch((error: AxiosError): void => {
-        alert(
-          "検索実行時にエラーが発生しました。時間をおいて再度の試みをお願いいたします。"
-        );
-      });
-  }
   public openSnackbar(snackbarText: string) {
     this.snackbarText = snackbarText;
     this.snackbar = true;

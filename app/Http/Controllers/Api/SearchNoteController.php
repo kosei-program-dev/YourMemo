@@ -14,8 +14,7 @@ class SearchNoteController extends Controller
         $searchWord = $request->searchWord;
         $data = Note::where(function($query) use ($searchWord){
             $query->where('title', 'LIKE', "%".$searchWord."%")
-            ->orWhere('comment', 'LIKE', "%".$searchWord,"%")
-            ->select('id','title','comment','url','evaluation','created_at');
+            ->orWhere('comment', 'LIKE', "%".$searchWord,"%");
         })
         ->get();
         return ['data' => $data];
@@ -25,13 +24,11 @@ class SearchNoteController extends Controller
         $this->certification();
         $user_id = Auth::id();
         $searchWord = $request->searchWord;
-        $data = Note::where(function($query) use ($searchWord,$user_id){
-            $query->where('user_id',$user_id)
-            ->where('title', 'LIKE', "%".$searchWord."%")
-            ->orWhere('comment', 'LIKE', "%".$searchWord,"%")
-            ->select('id','title','comment','url','evaluation','created_at');
-        })
-        ->get();
+        $data = Note::where('user_id',$user_id)
+            ->where(function($query) use ($searchWord){
+                $query->where('title', 'LIKE', "%".$searchWord."%")
+                ->orWhere('comment', 'LIKE', "%".$searchWord,"%");
+            })->get();
         return ['data' => $data];
     }
 

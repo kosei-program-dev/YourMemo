@@ -11,7 +11,13 @@ class MyNoteController extends Controller
 {
     public function getMyNotes(){
         $user_id = Auth::id();
-        $data = Note::where('user_id',$user_id)->with('favoriteNotes')->get();
+        $data = Note::where('user_id',$user_id)->with([
+            'favoriteNotes' => function($query) {
+                $query->where('user_id', Auth::id());
+            }
+        ])
+        ->select('id','title','comment','url','evaluation','created_at')
+        ->get();
         return ['data' => $data];
     }
 }

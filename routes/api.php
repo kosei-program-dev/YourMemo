@@ -24,6 +24,7 @@ Route::group(['middleware' => ['api']], function () {
     Route::get('get/searchNote', 'Api\SearchNoteController@searchNote');
     Route::get('get/searchMyNote', 'Api\SearchNoteController@searchMyNote');
     Route::post('get/registerNote', 'Api\RegisterNoteController@registerNote');
+    Route::post('post/switchFavorite', 'Api\SwitchFavoriteNoteController@switchFavorite');
     Route::post('delete/deleteNote', 'Api\DeleteMyNoteController@deleteNote');
     Route::post('update/updateNote', 'Api\UpdateMyNoteController@updateNote');
 });

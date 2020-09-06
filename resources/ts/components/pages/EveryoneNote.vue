@@ -36,7 +36,7 @@
         <tbody>
           <tr v-for="(item, index) in notes" :key="index">
             <td class="text-center">
-              <v-btn icon :color="jadgeFavorite(item.favorite_notes[0])">
+              <v-btn icon :color="jadgeFavorite(item.favorite_notes)">
                 <v-icon @click="switchFavorite(item)">mdi-heart</v-icon>
               </v-btn>
             </td>

@@ -20,7 +20,7 @@ class SwitchFavoriteNoteController extends Controller
         if(!$target){
             $this->create($request->data["id"]);
         } else {
-            $this->delete($target[0]["id"]);
+            $this->delete($target["id"]);
         }
         return "ok";
     }

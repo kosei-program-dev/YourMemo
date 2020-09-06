@@ -19,4 +19,16 @@ class EveryoneNoteController extends Controller
         ->get();
         return ['data' => $data];
     }
+
+    public function getAllFavoriteNotes(){
+        $data = Note::whereHas('favoriteNotes',function($query){
+            $query->where('user_id',Auth::id());
+        })->with([
+            'favoriteNotes' => function($query) {
+                $query->where('user_id', Auth::id());
+            }
+        ])->get();
+        return ['data' => $data];
+    }
+
 }

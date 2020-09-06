@@ -22,7 +22,7 @@ class SwitchFavoriteNoteController extends Controller
         } else {
             $this->delete($target["id"]);
         }
-        return "ok";
+        return ;
     }
 
     public function userCertification(){

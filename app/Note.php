@@ -17,6 +17,6 @@ class Note extends Model
     ];
     public function favoriteNotes()
     {
-        return $this->hasMany('App\FavoriteNote');
+        return $this->hasOne('App\FavoriteNote');
     }
 }

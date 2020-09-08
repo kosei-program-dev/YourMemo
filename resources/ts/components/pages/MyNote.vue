@@ -59,11 +59,7 @@
                     <td class="text-center" @click="openPreview(item.url)">
                         {{ item.comment }}
                     </td>
-                    <td
-                        class="text-center"
-                        style="white-space:pre-wrap; word-wrap:break-word;"
-                        @click="openPreview(item.url)"
-                    >
+                    <td class="text-center" @click="openPreview(item.url)">
                         {{ item.url }}
                     </td>
                     <td class="text-center" @click="openPreview(item.url)">
